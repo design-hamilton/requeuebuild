@@ -1,0 +1,177 @@
+import React from 'react'
+import Headers from './common/header';
+import { SidemenuStyle, AddClientStyle, SidemenuTextStyle, SidemenuParentStyle, LogoFoot, PeraFoot, StyledModalHeader, SeatButtonStyle, ConfirmButtonModalAddChairs, SpacedFlex } from './styled/common.styled';
+import { FlexHLeft, FlexH, FlexV, FlexVBottom } from './styled/global.styled';
+import Modal from 'react-modal';
+import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
+import Link from 'next/link'
+import Seats from './common/modal/Seats';
+import Listing from './common/modal/Listing';
+import Chairs from './common/modal/Chairs';
+import PhoneNumber from './common/input/PhoneNumber';
+import Input from './common/input/Input';
+import Radio from './common/input/Radio';
+import TextArea from './common/input/TextArea';
+import { GrClose } from 'react-icons/gr';
+
+
+Modal.setAppElement('#__next');
+Modal.defaultStyles.overlay.backgroundColor = 'transparent';
+
+
+
+const Layout = (props) => {
+    const router = useRouter();
+    const [modalIsOpen, setIsOpen] = useState(false);
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function afterOpenModal() {
+        // references are now sync'd and can be accessed.
+        // subtitle.style.color = '#f00';
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
+    //   console.log();
+
+    const [seatingone, setSeatingone] = useState({ name: "INSIDE" });
+    const [seatingtwo, setSeatingtwo] = useState({ name: "SINGLE" });
+    const [seatingthree, setSeatingthree] = useState({ name: "BLACONY" });
+    const [chairs, setChairs] = useState({ name: "1" });
+
+    const chairsList = [{ name: "1" }, { name: "2" }, { name: "3" },{ name: "4" }, { name: "5" }, { name: "6" },{ name: "7" }, { name: "8" }, { name: "9" },{ name: "10" }, { name: "12" }, { name: "13" },{ name: "14" },{ name: "15" }, { name: "16+" }];
+    const seatingonelistone = [{ name: "INSIDE" }, { name: "ANY" }, { name: "OUTSIDE" }];
+    const seatingtwolisttwo = [{ name: "SINGLE" }, { name: "FAMILY" }, { name: "BOTH" }];
+    const seatingthreelistthree = [{ name: "BLACONY" }, { name: "SMOKING" }, { name: "ROOF" }, { name: "FIRST FLOOR" }, { name: "PARTY ZONE" }, { name: "TERAS" }];
+
+    const handleSelectChairs = (e) => {
+        setChairs(e);
+    }
+    const handleSelectseatingone = (e) => {
+        setSeatingone(e);
+    }
+    const handleSelectseatingtwo = (e) => {
+        setSeatingtwo(e);
+    }
+    const handleSelectseatingthree = (e) => {
+        setSeatingthree(e);
+    }
+
+
+
+    return (
+        <>
+            <div>
+                <Headers pagename={props.pagename}
+                    clas={props.clas}
+                    msg={props.msg}
+                    listView={props.listView}
+                    listViewCls={props.listViewCls}
+                    gridViewCls={props.gridViewCls}
+                />
+                <div className="container">
+                    <FlexHLeft className="gap">
+                        <SidemenuParentStyle>
+                            <SidemenuStyle>
+                                <Link
+                                    href={`${router.pathname}?addguest=addguest`} as={`${router.pathname}/addguest`}>
+                                    <AddClientStyle
+                                    //  onClick={openModal}
+                                    >
+                                        <b >
+                                            +
+                                </b>
+                                        <strong> Add Guest </strong>
+                                    </AddClientStyle>
+                                </Link>
+
+                                <SidemenuTextStyle>
+                                    <h1>Queue</h1>
+                                    <a href="#">Hold</a>
+                                    <a href="#">History</a>
+                                    <a href="#">Tables</a>
+                                </SidemenuTextStyle>
+                            </SidemenuStyle>
+                            <FlexH className="mt-4 mb-3">
+
+                                <LogoFoot src="../../img/logo.png" />
+
+                                <FlexVBottom className="mb-2">
+                                    <PeraFoot>
+                                        Powered By <br />
+                                        Requeue Company<br />
+                                        www.requeue.net
+                                </PeraFoot>
+                                </FlexVBottom>
+
+                            </FlexH>
+
+                        </SidemenuParentStyle>
+
+
+                        {props.body}
+                    </FlexHLeft>
+                </div>
+            </div>
+            <Modal
+                //   isOpen={modalIsOpen}
+                isOpen={!!router.query.addguest}
+                //   onAfterOpen={afterOpenModal}
+                //   onRequestClose={closeModal} 
+                onRequestClose={() => router.push('')}
+                portalClassName="modalss"
+                className="modal"
+
+            //   overlayClassName="overlay"
+
+            >
+                <StyledModalHeader>
+                    <a onClick={() => router.push('')}>
+                    <GrClose />
+            </a>
+                </StyledModalHeader>
+
+                <FlexH className="mt-4 mb-3 gap">
+                    <div className="w-100">
+                    <Seats>
+                        <h2>SEATING AREA</h2>
+                        <Listing listItem={seatingonelistone} value={seatingone.name} handleSelect={handleSelectseatingone} />
+                        <Listing listItem={seatingtwolisttwo} value={seatingtwo.name} handleSelect={handleSelectseatingtwo} />
+                        <Listing listItem={seatingthreelistthree} value={seatingthree.name} handleSelect={handleSelectseatingthree} />
+                    </Seats>
+                    </div>
+
+                    <SpacedFlex className="w-100">
+                    <Seats>
+                         <h2>CHAIRS</h2>
+                         <Chairs chairsItem={chairsList} value={chairs.name} handleSelect={handleSelectChairs} />
+                         
+                    </Seats>
+                    <ConfirmButtonModalAddChairs>CONFIRM</ConfirmButtonModalAddChairs>
+                    </SpacedFlex> 
+
+                    <div className="w-100">
+                    <Seats>
+                        <h2>CUSTOMER DETAILS</h2> 
+                        <PhoneNumber></PhoneNumber>
+                        <Input name="name" placeholder="GUEST NAME"/>
+                        <div className="mt-4 mb-3">
+                            <Radio name="test">MALE</Radio>
+                            <Radio name="test">FEMALE</Radio>
+                        </div>
+                        <TextArea className="" id="textareaModal" name="textareaModal" placeholder="ADD NOTE ( OPTIONAL )"/>
+                    </Seats>
+                    </div> 
+                </FlexH>
+
+            </Modal>
+        </>
+    )
+}
+
+
+export default Layout
