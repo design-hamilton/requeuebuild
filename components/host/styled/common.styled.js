@@ -1139,5 +1139,27 @@ letter-spacing: 0.01em;
 text-align: center;
 color: #ef5e82; 
 `
+export const OpeningStyle = styled.div` 
+h2{
+    font-weight: 600;
+font-size: 17px;
+letter-spacing: 0.01em; 
+color: #04d1a8;
+}
+${
+    `${StyledInputModal}{ 
+        text-align: center;
+        border: 1px solid var(--CustBorder);
+        margin-top: 0px;
+        border-radius: 15px;
+        padding-right: 20px;
+        width: auto;
+        padding-left: 20px;
+        padding-top: 10px;
+    padding-bottom: 10px;
+        }`
+    } 
+
+`
  
 

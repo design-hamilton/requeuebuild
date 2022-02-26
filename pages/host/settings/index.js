@@ -12,6 +12,7 @@ import Link from 'next/link';
 import Modal from 'react-modal';
 import { GrClose } from 'react-icons/gr';
 import { CgCloseO } from 'react-icons/cg'; 
+import { OpeningInputModal } from '../../../components/host/common/input/OpeningInputModal';
 
 
 Modal.setAppElement('#__next');
@@ -177,8 +178,10 @@ const index = () => {
                                             </p>
                                     </div>
                                     <div className="F-50">
-                                        <div>
-                                            <EditSetting>Edit</EditSetting>
+                                        <div> 
+                                            <Link href={`${router.pathname}?openingAndClosing=openingAndClosing`} as={`${router.pathname}/openingAndClosing`}> 
+                                                <EditSetting>Edit</EditSetting>
+                                            </Link> 
                                         </div>
                                     </div>
                                 </li>
@@ -583,6 +586,44 @@ const index = () => {
             </Modal>
 
             {/* Auto Notification */}
+
+
+            {/* Opening and CLosing */}
+
+            <Modal isOpen={!!router.query.openingAndClosing} 
+                onRequestClose={() => router.push('')} 
+                portalClassName="modl"
+                className="modal mddll">
+                
+                   
+                <div className="w-100 relative">
+                    <h2 className="text-center"> <CgCloseO className="absolute-left pointer"  onClick={() => router.push('')}/> <span className="v_middle"> Opening and closing system </span> </h2>                     
+                   
+                </div>
+                <FlexH className="mt-5 mb-5 gap pl-5 pr-5 w-100 text-center relative">   
+                    
+                    {/* <div className="absolute-right top-sp">
+                        <DangerPera className="">Automatically send to turn #</DangerPera>
+                        <div className="flex-center"> 
+                            <Select options={turnnotification} setSelecetedValue={setSelecetedturnnotification}/>                                 
+                        </div>
+                    </div> */}
+
+                    <div className=" pl-3 pr-3 text-center">
+                        <OpeningInputModal head="Opening time" name="Openingtime" placeholder="Opening Time" value=""/>
+                    </div>  
+                     
+                    <div className=" pl-3 pr-3 text-center">
+                        <OpeningInputModal head="Opening time" name="Openingtime" placeholder="Opening Time" value=""/>
+                    </div>  
+                     
+                </FlexH> 
+                <div className="w-100 text-center mb-2">
+                    <SaveModl>Save</SaveModl>                   
+                </div>
+            </Modal>
+
+            {/* Opening and CLosing */}
 
         </>
     )

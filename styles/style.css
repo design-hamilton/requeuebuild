@@ -1437,6 +1437,9 @@ header , header * {
     margin: 0 auto;
     margin-top: 40px;
 }
+.modl .mddll{
+max-width: 1024px;
+}
 
 *::-webkit-scrollbar {
     width: 1px;
