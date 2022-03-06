@@ -1161,5 +1161,55 @@ ${
     } 
 
 `
+export const ClosingStyle = styled.div` 
+h2{
+    font-weight: 600;
+font-size: 17px;
+letter-spacing: 0.01em; 
+color: #EF5E82;
+}
+${
+    `${StyledInputModal}{ 
+        text-align: center;
+        border: 1px solid var(--CustBorder);
+        margin-top: 0px;
+        border-radius: 15px;
+        padding-right: 20px;
+        width: auto;
+        padding-left: 20px;
+        padding-top: 10px;
+    padding-bottom: 10px;
+        }`
+    } 
+`
+export const UldaysStyle = styled.ul` 
+text-align: center;
+float:left;
+display:block;
+li{
+    display: inline-block;
+    margin: 0px 10px;
+    padding: 10px 15px;
+    text-align: center;
+    background: var(--fg);
+    color: var(--bg);
+    border-radius: 30px;
+    text-align: center;
+    min-width: 100px;
+    cursor:pointer;
+    transition:0.5s;
+    
+    &.selected{
+        background: #7537BE;
+        color:#fff;
+        transition:0.5s;
+    }
+    &[disabled]{
+        background:#818181;
+        color:var(--fg);
+        cursor: not-allowed;
+    }
+}
+`
  
 

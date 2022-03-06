@@ -4,15 +4,18 @@ import ThemeChanger from '../../../components/host/common/ThemeChanger';
 import { FaChevronLeft, FaRegPaperPlane } from 'react-icons/fa';
 import { MdSettings, MdOutlineNotificationsActive } from 'react-icons/md';
 import { GoPrimitiveDot } from 'react-icons/go';
-import { SettingsBox, GridForTwo, EditSetting, InputSettings, SaveSetting, StyledModalHeader, SpacedFlex, SaveModl, ModlTextarea,DangerPera } from '../../../components/host/styled/common.styled';
+import { SettingsBox, GridForTwo, EditSetting, InputSettings, SaveSetting, StyledModalHeader, SpacedFlex, SaveModl, ModlTextarea, DangerPera } from '../../../components/host/styled/common.styled';
 import Switch from '../../../components/host/common/input/Switch';
 import { useState, useEffect } from 'react';
 import Select from '../../../components/host/common/input/Select';
 import Link from 'next/link';
 import Modal from 'react-modal';
 import { GrClose } from 'react-icons/gr';
-import { CgCloseO } from 'react-icons/cg'; 
+import { CgCloseO } from 'react-icons/cg';
 import { OpeningInputModal } from '../../../components/host/common/input/OpeningInputModal';
+import { ClosingInputModal } from '../../../components/host/common/input/ClosingInputModal';
+import DaysModal from '../../../components/host/common/DaysModal';
+import OpeningAndClosingDays from '../../../components/host/common/OpeningAndClosingDays';
 
 
 Modal.setAppElement('#__next');
@@ -62,7 +65,7 @@ const index = () => {
 
     const [showoutside, setShowoutside] = useState(false);
     const handelShowoutside = (e) => { setShowoutside(!showoutside); }
-    
+
     const [closeinside, setCloseinside] = useState(false);
     const handelCloseinside = (e) => { setCloseinside(!closeinside); }
 
@@ -79,26 +82,50 @@ const index = () => {
 
     const cancelTime = [{ name: "1 min" }, { name: "2 min" }, { name: "3 min" }, { name: "5 min" }, { name: "10 min" }, { name: "15 min" }, { name: "30 min" }];
     const [selectedcancelTime, setSelecetedcancelTime] = useState();
-   
+
     const holdTime = [{ name: "1 min" }, { name: "2 min" }, { name: "3 min" }, { name: "5 min" }, { name: "10 min" }, { name: "15 min" }, { name: "30 min" }];
     const [selectedholdTime, setSelecetedholdTime] = useState();
-  
+
     const autofulloutsideselect = [{ name: "5" }, { name: "10" }, { name: "15" }, { name: "25" }, { name: "50" }, { name: "75" }, { name: "100" }];
     const [selectedautofulloutsideselect, setSelecetedautofulloutsideselect] = useState();
-  
+
     const maxchairsoutsideselect = [{ name: "5" }, { name: "10" }, { name: "15" }, { name: "25" }, { name: "50" }, { name: "75" }, { name: "100" }];
     const [selectedmaxchairsoutsideselect, setSelecetedmaxchairsoutsideselect] = useState();
-  
+
     const autofullinsideselect = [{ name: "5" }, { name: "10" }, { name: "15" }, { name: "25" }, { name: "50" }, { name: "75" }, { name: "100" }];
     const [selectedautofullinsideselect, setSelecetedautofullinsideselect] = useState();
-  
+
     const maxchairsinsideselect = [{ name: "5" }, { name: "10" }, { name: "15" }, { name: "25" }, { name: "50" }, { name: "75" }, { name: "100" }];
     const [selectedmaxchairsinsideselect, setSelecetedmaxchairsinsideselect] = useState();
-  
+
     const turnnotification = [{ name: "5" }, { name: "10" }, { name: "15" }, { name: "25" }, { name: "50" }, { name: "75" }, { name: "100" }];
     const [selectedturnnotification, setSelecetedturnnotification] = useState();
-  
-    
+
+
+    const [days, setDays] = useState([{ name: "Monday" }]);  
+    const daysList = [{ name: "Monday" }, { name: "Tuesday" }, { name: "Wednesday" }, { name: "Thursday" }, { name: "Friday" }, { name: "Saturday" }, { name: "Sunday" }];
+    const handleSelectdays = (e) => {
+        const foundDay = days.find(day => day.name === e.name)
+        if (foundDay) {
+            const new_days = days.filter(day => day.name !== e.name)
+            setDays(new_days)
+        } else {
+            setDays([...days, e]);
+        }
+    }
+
+
+
+    const [additionaldays, setAdditionaldays] = useState(1);
+ 
+    const handleAddNewTime = () =>{
+        // alert("ss");
+        setAdditionaldays(additionaldays+1)
+    }
+    const handleAlert = (i) =>{
+        // setAdditionaldays(delete additionaldays[i])
+    }
+
 
     return (
         <>
@@ -124,7 +151,7 @@ const index = () => {
                                             <Switch check={autocancel ? true : false} onChange={handelAutocancel} />
                                         </div>
                                         <div>
-                                            <Select options={cancelTime} setSelecetedValue={setSelecetedcancelTime}/>                                           
+                                            <Select options={cancelTime} setSelecetedValue={setSelecetedcancelTime} />
                                         </div>
                                     </div>
                                 </li>
@@ -132,7 +159,7 @@ const index = () => {
                                     <div>
                                         <p>
                                             Canceled reasons
-                                            </p>
+                                        </p>
                                     </div>
                                     <div className="F-50">
                                         <div>
@@ -151,7 +178,7 @@ const index = () => {
                                     <div className="w-100">
                                         <p>
                                             Branche Offline
-                                            </p>
+                                        </p>
                                     </div>
                                     <div className="F-50">
                                         <div>
@@ -163,7 +190,7 @@ const index = () => {
                                     <div className="w-100">
                                         <p>
                                             Branche close
-                                            </p>
+                                        </p>
                                     </div>
                                     <div className="F-50">
                                         <div>
@@ -175,13 +202,13 @@ const index = () => {
                                     <div className="w-100">
                                         <p>
                                             Opening and closing system
-                                            </p>
+                                        </p>
                                     </div>
                                     <div className="F-50">
-                                        <div> 
-                                            <Link href={`${router.pathname}?openingAndClosing=openingAndClosing`} as={`${router.pathname}/openingAndClosing`}> 
+                                        <div>
+                                            <Link href={`${router.pathname}?openingAndClosing=openingAndClosing`} as={`${router.pathname}/openingAndClosing`}>
                                                 <EditSetting>Edit</EditSetting>
-                                            </Link> 
+                                            </Link>
                                         </div>
                                     </div>
                                 </li>
@@ -202,7 +229,7 @@ const index = () => {
                                     </div>
                                     <div className="F-50">
                                         <div>
-                                            <Link href={`${router.pathname}?editCustomizedMessage=editCustomizedMessage`} as={`${router.pathname}/editCustomizedMessage`}> 
+                                            <Link href={`${router.pathname}?editCustomizedMessage=editCustomizedMessage`} as={`${router.pathname}/editCustomizedMessage`}>
                                                 <EditSetting>Edit</EditSetting>
                                             </Link>
                                         </div>
@@ -216,7 +243,7 @@ const index = () => {
                                     </div>
                                     <div className="F-50">
                                         <div>
-                                            <Link href={`${router.pathname}?editAutoNotification=editAutoNotification`} as={`${router.pathname}/editAutoNotification`}> 
+                                            <Link href={`${router.pathname}?editAutoNotification=editAutoNotification`} as={`${router.pathname}/editAutoNotification`}>
                                                 <EditSetting>Edit</EditSetting>
                                             </Link>
                                         </div>
@@ -235,7 +262,7 @@ const index = () => {
                                     <div className="w-100">
                                         <p>
                                             Special areas
-                                            </p>
+                                        </p>
                                     </div>
                                     <div className="F-50">
                                         <div>
@@ -247,7 +274,7 @@ const index = () => {
                                     <div className="w-100">
                                         <p>
                                             Show anywhere area
-                                            </p>
+                                        </p>
                                     </div>
                                     <div className="F-50">
                                         <div>
@@ -266,14 +293,14 @@ const index = () => {
                                     <div>
                                         <p>
                                             Auto hold
-                                            </p>
+                                        </p>
                                     </div>
                                     <div className="F-50">
                                         <div>
                                             <Switch check={autohold ? true : false} onChange={handelAutohold} />
                                         </div>
-                                        <div> 
-                                            <Select options={holdTime} setSelecetedValue={setSelecetedholdTime}/>                                                                                       
+                                        <div>
+                                            <Select options={holdTime} setSelecetedValue={setSelecetedholdTime} />
                                         </div>
                                     </div>
                                 </li>
@@ -281,7 +308,7 @@ const index = () => {
                                     <div>
                                         <p>
                                             Hold
-                                            </p>
+                                        </p>
                                     </div>
                                     <div className="F-50">
                                         <div>
@@ -300,7 +327,7 @@ const index = () => {
                                     <div className="w-100">
                                         <p>
                                             Branche Full
-                                            </p>
+                                        </p>
                                     </div>
                                     <div className="F-50">
                                         <div>
@@ -312,7 +339,7 @@ const index = () => {
                                     <div className="w-100">
                                         <p>
                                             Outside Full
-                                            </p>
+                                        </p>
                                     </div>
                                     <div className="F-50">
                                         <div>
@@ -324,7 +351,7 @@ const index = () => {
                                     <div className="w-100">
                                         <p>
                                             Inside Full
-                                            </p>
+                                        </p>
                                     </div>
                                     <div className="F-50">
                                         <div>
@@ -338,20 +365,20 @@ const index = () => {
 
                     <SettingsBox>
                         <h3><GoPrimitiveDot className="v_middle" /> <span className="v_middle">Outside area</span> <SaveSetting>Save</SaveSetting> </h3>
-                        
+
                         <div className="pl-4 pr-4">
                             <ul className="listUnstyled pl-0">
                                 <li className="F-50 mt-4">
                                     <div className="w-100 p-2">
                                         <p className="mb-2">
                                             English
-                                            </p>
+                                        </p>
                                         <InputSettings className="w-100 " placeholder="Change outside name  " />
                                     </div>
                                     <div className="w-100  p-2">
                                         <p className="mb-2">
                                             Arabic
-                                            </p>
+                                        </p>
                                         <InputSettings className="w-100 arabic" placeholder="Change outside name  " />
                                     </div>
                                 </li>
@@ -367,7 +394,7 @@ const index = () => {
                                                     </div>
                                                     <div className="w-25">
                                                         <div>
-                                                            <Switch check={closeoutside?true:false} onChange={handelCloseoutside} />
+                                                            <Switch check={closeoutside ? true : false} onChange={handelCloseoutside} />
                                                         </div>
                                                     </div>
                                                 </li>
@@ -379,19 +406,19 @@ const index = () => {
                                                     </div>
                                                     <div className="w-25">
                                                         <div>
-                                                            <Switch check={autofulloutside?true:false} onChange={handelAutofulloutside} />
+                                                            <Switch check={autofulloutside ? true : false} onChange={handelAutofulloutside} />
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li className="F-50  mt-4">
                                                     <div className="w-75">
                                                         <p>
-                                                        Show outside area
+                                                            Show outside area
                                                         </p>
                                                     </div>
                                                     <div className="w-25">
                                                         <div>
-                                                            <Switch check={showoutside?true:false} onChange={handelShowoutside} />
+                                                            <Switch check={showoutside ? true : false} onChange={handelShowoutside} />
                                                         </div>
                                                     </div>
                                                 </li>
@@ -401,27 +428,27 @@ const index = () => {
                                             <ul className="listUnstyled pl-0">
                                                 <li className="F-50  mt-4">
                                                     <div>
-                                                        <Select options={autofulloutsideselect} setSelecetedValue={setSelecetedautofulloutsideselect}/>  
-                                                    </div> 
-                                                </li> 
+                                                        <Select options={autofulloutsideselect} setSelecetedValue={setSelecetedautofulloutsideselect} />
+                                                    </div>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </li>
 
                                 <li className="F-50 mt-4">
-                                <div className="pl-5 F-50 w-100">
-                                    <div className="pl-3 pr-3   pb-2 w-75">
-                                        <p>
-                                            Maximum chairs 
+                                    <div className="pl-5 F-50 w-100">
+                                        <div className="pl-3 pr-3   pb-2 w-75">
+                                            <p>
+                                                Maximum chairs
                                             </p>
-                                    </div>
-                                    <div className="pl-3 pr-3  pb-2 w-25">
-                                         
-                                        <div> 
-                                            <Select options={maxchairsoutsideselect} setSelecetedValue={setSelecetedmaxchairsoutsideselect}/>                                               
                                         </div>
-                                    </div>
+                                        <div className="pl-3 pr-3  pb-2 w-25">
+
+                                            <div>
+                                                <Select options={maxchairsoutsideselect} setSelecetedValue={setSelecetedmaxchairsoutsideselect} />
+                                            </div>
+                                        </div>
                                     </div>
                                 </li>
 
@@ -431,20 +458,20 @@ const index = () => {
 
                     <SettingsBox>
                         <h3><GoPrimitiveDot className="v_middle" /> <span className="v_middle">inside area</span> <SaveSetting>Save</SaveSetting> </h3>
-                        
+
                         <div className="pl-4 pr-4">
                             <ul className="listUnstyled pl-0">
                                 <li className="F-50 mt-4">
                                     <div className="w-100 p-2">
                                         <p className="mb-2">
                                             English
-                                            </p>
+                                        </p>
                                         <InputSettings className="w-100" placeholder="Change inside name  " />
                                     </div>
                                     <div className="w-100  p-2">
                                         <p className="mb-2">
                                             Arabic
-                                            </p>
+                                        </p>
                                         <InputSettings className="w-100 arabic" placeholder="Change inside name  " />
                                     </div>
                                 </li>
@@ -460,7 +487,7 @@ const index = () => {
                                                     </div>
                                                     <div className="w-25">
                                                         <div>
-                                                            <Switch check={closeinside?true:false} onChange={handelCloseinside} />
+                                                            <Switch check={closeinside ? true : false} onChange={handelCloseinside} />
                                                         </div>
                                                     </div>
                                                 </li>
@@ -472,19 +499,19 @@ const index = () => {
                                                     </div>
                                                     <div className="w-25">
                                                         <div>
-                                                            <Switch check={autofullinside?true:false} onChange={handelAutofullinside} />
+                                                            <Switch check={autofullinside ? true : false} onChange={handelAutofullinside} />
                                                         </div>
                                                     </div>
                                                 </li>
                                                 <li className="F-50  mt-4">
                                                     <div className="w-75">
                                                         <p>
-                                                        Show inside area
+                                                            Show inside area
                                                         </p>
                                                     </div>
                                                     <div className="w-25">
                                                         <div>
-                                                            <Switch check={showinside?true:false} onChange={handelShowinside} />
+                                                            <Switch check={showinside ? true : false} onChange={handelShowinside} />
                                                         </div>
                                                     </div>
                                                 </li>
@@ -494,94 +521,94 @@ const index = () => {
                                             <ul className="listUnstyled pl-0">
                                                 <li className="F-50  mt-4">
                                                     <div>
-                                                        <Select options={autofulloutsideselect} setSelecetedValue={setSelecetedautofulloutsideselect}/>  
-                                                    </div> 
-                                                </li> 
+                                                        <Select options={autofulloutsideselect} setSelecetedValue={setSelecetedautofulloutsideselect} />
+                                                    </div>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
                                 </li>
 
                                 <li className="F-50 mt-4">
-                                <div className="pl-5 F-50 w-100">
-                                    <div className="pl-3 pr-3   pb-2 w-75">
-                                        <p>
-                                            Maximum chairs 
+                                    <div className="pl-5 F-50 w-100">
+                                        <div className="pl-3 pr-3   pb-2 w-75">
+                                            <p>
+                                                Maximum chairs
                                             </p>
-                                    </div>
-                                    <div className="pl-3 pr-3  pb-2 w-25">
-                                         
-                                        <div>
-                                            <Select options={maxchairsinsideselect} setSelecetedValue={setSelecetedmaxchairsinsideselect}/>                                                                                            
                                         </div>
-                                    </div>
+                                        <div className="pl-3 pr-3  pb-2 w-25">
+
+                                            <div>
+                                                <Select options={maxchairsinsideselect} setSelecetedValue={setSelecetedmaxchairsinsideselect} />
+                                            </div>
+                                        </div>
                                     </div>
                                 </li>
 
                             </ul>
                         </div>
-                    </SettingsBox>  
+                    </SettingsBox>
                 </GridForTwo>
-                
+
             </div>
 
 
 
             {/* Customized Message */}
 
-            <Modal isOpen={!!router.query.editCustomizedMessage} 
-                onRequestClose={() => router.push('')} 
+            <Modal isOpen={!!router.query.editCustomizedMessage}
+                onRequestClose={() => router.push('')}
                 portalClassName="modl"
                 className="modal">
-                
-                   
+
+
                 <div className="w-100">
-                    <h2 className="text-center"> <CgCloseO className="absolute-left pointer"  onClick={() => router.push('')}/> <FaRegPaperPlane className="v_middle fsize30 mr-2" /> <span className="v_middle"> Message Customized </span> </h2>                     
+                    <h2 className="text-center"> <CgCloseO className="absolute-left pointer" onClick={() => router.push('')} /> <FaRegPaperPlane className="v_middle fsize30 mr-2" /> <span className="v_middle"> Message Customized </span> </h2>
                 </div>
-                <FlexH className="mt-5 mb-5 gap pl-5 pr-5">  
+                <FlexH className="mt-5 mb-5 gap pl-5 pr-5">
                     <div className="w-100">
-                        <p className="text-center m-0">English</p>   
-                         <ModlTextarea className="" id="textareaModal" name="textareaModal" defaultValue="Please proceed to the HOST, your table Will be ready soon" placeholder="ADD NOTE ( OPTIONAL )"/>  
-                    </div>  
+                        <p className="text-center m-0">English</p>
+                        <ModlTextarea className="" id="textareaModal" name="textareaModal" defaultValue="Please proceed to the HOST, your table Will be ready soon" placeholder="ADD NOTE ( OPTIONAL )" />
+                    </div>
                     <div className="w-100 ">
-                        <p className="text-center m-0">Arabic</p>   
-                         <ModlTextarea className="arabic text-right" id="textareaModal" name="textareaModal" defaultValue="الرجاء التوجه الى المطعم حال > طاولتك ستجهز قريبا" placeholder="ADD NOTE ( OPTIONAL )"/>  
-                    </div>   
-                </FlexH> 
+                        <p className="text-center m-0">Arabic</p>
+                        <ModlTextarea className="arabic text-right" id="textareaModal" name="textareaModal" defaultValue="الرجاء التوجه الى المطعم حال > طاولتك ستجهز قريبا" placeholder="ADD NOTE ( OPTIONAL )" />
+                    </div>
+                </FlexH>
                 <div className="w-100 text-center mb-2">
-                    <SaveModl>Save</SaveModl>                   
+                    <SaveModl>Save</SaveModl>
                 </div>
             </Modal>
             {/* Customized Message */}
 
             {/* Auto Notification */}
-            <Modal isOpen={!!router.query.editAutoNotification} 
-                onRequestClose={() => router.push('')} 
+            <Modal isOpen={!!router.query.editAutoNotification}
+                onRequestClose={() => router.push('')}
                 portalClassName="modl"
                 className="modal">
-                
-                   
+
+
                 <div className="w-100 relative">
-                    <h2 className="text-center"> <CgCloseO className="absolute-left pointer"  onClick={() => router.push('')}/> <MdOutlineNotificationsActive className="v_middle fsize30 mr-2" /> <span className="v_middle"> Auto Notification </span> </h2>                     
+                    <h2 className="text-center"> <CgCloseO className="absolute-left pointer" onClick={() => router.push('')} /> <MdOutlineNotificationsActive className="v_middle fsize30 mr-2" /> <span className="v_middle"> Auto Notification </span> </h2>
                     <div className="absolute-right top-sp">
                         <DangerPera className="">Automatically send to turn #</DangerPera>
-                        <div className="flex-center"> 
-                            <Select options={turnnotification} setSelecetedValue={setSelecetedturnnotification}/>                                 
+                        <div className="flex-center">
+                            <Select options={turnnotification} setSelecetedValue={setSelecetedturnnotification} />
                         </div>
                     </div>
                 </div>
-                <FlexH className="mt-5 mb-5 gap pl-5 pr-5">   
+                <FlexH className="mt-5 mb-5 gap pl-5 pr-5">
                     <div className="w-100">
-                        <p className="text-center m-0">English</p>   
-                         <ModlTextarea className="" id="textareaModal" name="textareaModal" defaultValue="Please proceed to the HOST, your table Will be ready soon" placeholder="ADD NOTE ( OPTIONAL )"/>  
-                    </div>  
+                        <p className="text-center m-0">English</p>
+                        <ModlTextarea className="" id="textareaModal" name="textareaModal" defaultValue="Please proceed to the HOST, your table Will be ready soon" placeholder="ADD NOTE ( OPTIONAL )" />
+                    </div>
                     <div className="w-100 ">
-                        <p className="text-center m-0">Arabic</p>   
-                         <ModlTextarea className="arabic text-right" id="textareaModal" name="textareaModal" defaultValue="الرجاء التوجه الى المطعم حال > طاولتك ستجهز قريبا" placeholder="ADD NOTE ( OPTIONAL )"/>  
-                    </div>   
-                </FlexH> 
+                        <p className="text-center m-0">Arabic</p>
+                        <ModlTextarea className="arabic text-right" id="textareaModal" name="textareaModal" defaultValue="الرجاء التوجه الى المطعم حال > طاولتك ستجهز قريبا" placeholder="ADD NOTE ( OPTIONAL )" />
+                    </div>
+                </FlexH>
                 <div className="w-100 text-center mb-2">
-                    <SaveModl>Save</SaveModl>                   
+                    <SaveModl>Save</SaveModl>
                 </div>
             </Modal>
 
@@ -590,36 +617,17 @@ const index = () => {
 
             {/* Opening and CLosing */}
 
-            <Modal isOpen={!!router.query.openingAndClosing} 
-                onRequestClose={() => router.push('')} 
-                portalClassName="modl"
-                className="modal mddll">
-                
-                   
+            <Modal isOpen={!!router.query.openingAndClosing} onRequestClose={() => router.push('')} portalClassName="modl" className="modal mddll">
                 <div className="w-100 relative">
-                    <h2 className="text-center"> <CgCloseO className="absolute-left pointer"  onClick={() => router.push('')}/> <span className="v_middle"> Opening and closing system </span> </h2>                     
-                   
-                </div>
-                <FlexH className="mt-5 mb-5 gap pl-5 pr-5 w-100 text-center relative">   
-                    
-                    {/* <div className="absolute-right top-sp">
-                        <DangerPera className="">Automatically send to turn #</DangerPera>
-                        <div className="flex-center"> 
-                            <Select options={turnnotification} setSelecetedValue={setSelecetedturnnotification}/>                                 
-                        </div>
-                    </div> */}
+                    <h2 className="text-center"> <CgCloseO className="absolute-left pointer" onClick={() => router.push('')} /> <span className="v_middle"> Opening and closing system </span> </h2>
+                </div> 
+                    {/* {additionaldays?
+                    <OpeningAndClosingDays days={daysList} value={days} handleSelect={handleSelectdays} handleAddNewTime={handleAddNewTime}/>
+                    :''} */}
 
-                    <div className=" pl-3 pr-3 text-center">
-                        <OpeningInputModal head="Opening time" name="Openingtime" placeholder="Opening Time" value=""/>
-                    </div>  
-                     
-                    <div className=" pl-3 pr-3 text-center">
-                        <OpeningInputModal head="Opening time" name="Openingtime" placeholder="Opening Time" value=""/>
-                    </div>  
-                     
-                </FlexH> 
+                { [...Array(additionaldays)].map( ( el,i) => ( <OpeningAndClosingDays key={i} onClick={handleAlert(i)} days={daysList} value={days} handleSelect={handleSelectdays} handleAddNewTime={handleAddNewTime}/> ) ) }
                 <div className="w-100 text-center mb-2">
-                    <SaveModl>Save</SaveModl>                   
+                    <SaveModl>Save</SaveModl>
                 </div>
             </Modal>
 

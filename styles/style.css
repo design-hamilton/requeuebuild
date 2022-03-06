@@ -1632,3 +1632,18 @@ button{
     direction:rtl;
     font-family: 'Tajawal', sans-serif;
 }
+.fl{
+    float:left;
+display:block;
+}
+.absolute_right{
+    position: absolute;
+    right: 20px;
+}
+.absolute_right i{
+font-size: 22px;
+}
+.absolute_right span{
+font-size: 14px;
+}
+
