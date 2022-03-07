@@ -13,7 +13,7 @@ import PhoneNumber from './common/input/PhoneNumber';
 import Input from './common/input/Input';
 import Radio from './common/input/Radio';
 import TextArea from './common/input/TextArea';
-import { GrClose } from 'react-icons/gr';
+import { VscChromeClose } from 'react-icons/vsc';
 
 
 Modal.setAppElement('#__next');
@@ -117,21 +117,14 @@ const Layout = (props) => {
                     </FlexHLeft>
                 </div>
             </div>
-            <Modal
-                //   isOpen={modalIsOpen}
-                isOpen={!!router.query.addguest}
-                //   onAfterOpen={afterOpenModal}
-                //   onRequestClose={closeModal} 
-                onRequestClose={() => router.push('')}
-                portalClassName="modalss"
-                className="modal"
 
-            //   overlayClassName="overlay"
-
-            >
+            <Modal isOpen={!!router.query.addguest} 
+                   onRequestClose={() => router.push('')}
+                   portalClassName="modalss"
+                   className="modal" >
                 <StyledModalHeader>
                     <a onClick={() => router.push('')}>
-                    <GrClose />
+                    <VscChromeClose />
             </a>
                 </StyledModalHeader>
 
