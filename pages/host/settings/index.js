@@ -131,7 +131,10 @@ const index = () => {
         <>
             <div className="container pb-4">
                 <FlexHspace className="mt-5 settings">
-                    <div className="bck" onClick={() => router.back()}><FaChevronLeft className="v_middle" /> <span className="v_middle">Go Back</span></div>
+                    <Link href="profile">
+                        <div className="bck" ><FaChevronLeft className="v_middle" /> <span className="v_middle">Go Back</span></div>
+                    </Link>
+                    {/* <div className="bck" onClick={() => router.back()}><FaChevronLeft className="v_middle" /> <span className="v_middle">Go Back</span></div> */}
                     <h3 className="m-0"><MdSettings className="v_middle" /> <span className="v_middle">Setting</span> </h3>
                     <ThemeChanger></ThemeChanger>
                 </FlexHspace>

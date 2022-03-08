@@ -6,17 +6,22 @@ import {RiListCheck,RiLayoutGridFill} from 'react-icons/ri';
 import { useState, useEffect } from 'react';
 import PhoneNumber from './input/PhoneNumber'; 
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+
 
 export default function Headers(props) {
- 
+    const router = useRouter();
+
     return (
         <>
             <HeaderStyle>
                 <div className="container">
                     <FlexHLeft className="gap">
-                        <ProfileHead>
-                            <FaRegUserCircle  /> <span>Profile</span> 
-                        </ProfileHead>
+                        <Link href={`?profile=profile`} as={`profile`}>
+                            <ProfileHead>
+                                <FaRegUserCircle  /> <span>Profile</span> 
+                            </ProfileHead>
+                        </Link>
                         <SearchNumberStyle>
                             <PhoneNumber/>
                         </SearchNumberStyle>
@@ -41,7 +46,7 @@ export default function Headers(props) {
                                 <RiLayoutGridFill />
                             </HeadIconStyle>
                         </SideContHoldStyle>
-                        <Link href="settings">settings</Link>
+                        
 
                     </FlexHLeft>
                 </div>

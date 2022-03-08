@@ -394,8 +394,7 @@ z-index:0;
         // transform: translate(0px);
         transition:0.2s;
     }
-    ${
-    `${CustBoxStyle}{
+    ${`${CustBoxStyle}{
             transform: translate(-186px);
             transition:0.8s;
         }`
@@ -672,8 +671,7 @@ h2{
     }
 }  
 
-    ${
-    `${ULStyle}{
+    ${`${ULStyle}{
            li{
             display: inline-block;
             padding: 5px 20px;
@@ -724,8 +722,7 @@ overflow-y:scroll;
   outline: 1px solid slategrey;
 }
 &.wwfilter{
-    ${
-    `${FilterContainer}{
+    ${`${FilterContainer}{
             background: var(--inBotBg);
             // min-height: 250px;
             position: relative;
@@ -737,8 +734,7 @@ overflow-y:scroll;
                 right: 20px;
                 top: -30px;
             }
-            ${
-    `${FilterSubContainer}{
+            ${`${FilterSubContainer}{
                          border:none;
                          width:50%;
                          float:left
@@ -765,64 +761,54 @@ flex-direction: row;
 gap:15px; 
 height:calc(100vh - 70px);
 &.list{
-    ${
-    `${StatusInfoStyle}{
+    ${`${StatusInfoStyle}{
         display:none;
         }`
     }
-    ${
-    `${ExpandCustHold}{
+    ${`${ExpandCustHold}{
         display:none;
         }`
     }
-    ${
-    `${CustBoxStyle}{
+    ${`${CustBoxStyle}{
             min-height:175px;
             }`
     }
-    ${
-    `${SeatButtonStyle}{
+    ${`${SeatButtonStyle}{
             width: 120px;
             height:100%;
             }`
     }
-    ${
-    `${HoldButtonStyle}{
+    ${`${HoldButtonStyle}{
             width: 120px;
             height:100%;
             }`
     }
-    ${
-    `${CancelButtonStyle}{
+    ${`${CancelButtonStyle}{
             width: 120px;
             height:100%;
             }`
     }
-    ${
-    `${ParentCustButtonsStyle}{
+    ${`${ParentCustButtonsStyle}{
             display: flex;
             flex-direction: row-reverse;
             max-height: 175px;
             }`
     }
     .edit{
-        ${
-    `${CustBoxStyle}{
+        ${`${CustBoxStyle}{
               transform: translate(-330px);
               }`
     }
     }
 }
 &.grid{
-    ${
-    `${ParentForBoth}{
+    ${`${ParentForBoth}{
             flex-direction: column;
             border-top: 1px solid var(--CustBorder);
             padding-top: 15px;
         }`
     } 
-    ${
-    `${AnotherParentExpandDtl}{ 
+    ${`${AnotherParentExpandDtl}{ 
             border-top: 1px solid var(--CustBorder);
             padding-top: 15px;
             &:last-child(){
@@ -857,8 +843,7 @@ h2{
     text-align: left; 
     text-align:center;    
 }
-    ${
-    `${ULStyle}{
+    ${`${ULStyle}{
             &:nth-child(2) {
                 border-top: unset;
              }
@@ -1146,8 +1131,7 @@ font-size: 17px;
 letter-spacing: 0.01em; 
 color: #04d1a8;
 }
-${
-    `${StyledInputModal}{ 
+${`${StyledInputModal}{ 
         text-align: center;
         border: 1px solid var(--CustBorder);
         margin-top: 0px;
@@ -1168,8 +1152,7 @@ font-size: 17px;
 letter-spacing: 0.01em; 
 color: #EF5E82;
 }
-${
-    `${StyledInputModal}{ 
+${`${StyledInputModal}{ 
         text-align: center;
         border: 1px solid var(--CustBorder);
         margin-top: 0px;
@@ -1211,5 +1194,65 @@ li{
     }
 }
 `
- 
-
+export const ProfilePopUpButton = styled.button` 
+background:var(--headerBg);
+color:var(--fg);
+width: 187px;
+height: 55px;
+border-radius: 5px;
+padding:10px 25px;
+border:transparent;
+margin-bottom:5px;
+span{
+    font-weight: normal;
+font-size: 15px;
+letter-spacing: 0.01em; 
+}
+i{ 
+    font-size: 25px;
+    letter-spacing: 0.01em;
+    display: inline-block;
+    svg{
+        vertical-align: text-top;
+    }
+ }
+`
+export const ProfileMsgBox = styled.div` 
+ width: 100%;
+ min-height: 145px;
+border-radius: 16px;
+background: var(--fg);
+color:var(--bg);
+padding:20px 30px;
+opacity:0.9;
+`
+export const SenderProfileMsgBox = styled.span` 
+color:var(--bg);
+float:left;
+width:60%;
+font-weight: 900;
+font-size: 14px;
+letter-spacing: 0.01em;
+`
+export const DateProfileMsgBox = styled.span` 
+color:var(--bg);
+float:right;
+width:40%;
+font-weight: 900;
+font-size: 14px;
+letter-spacing: 0.01em; 
+text-align:right;
+`
+export const MsgProfileMsgBox = styled.p` 
+color:var(--bg);
+clear:both;
+display:block;
+width:100%;
+font-weight: 500;
+font-size: 15px;
+letter-spacing: 0.01em;
+line-height: 22px;
+text-align: left;
+float:left;
+padding: 10px 20px;
+`

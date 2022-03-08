@@ -7,6 +7,7 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --fg: #fff;
     --bg: #242627;
+    --profilebg: rgb(36 38 39 / 90%);
     --headerBg: linear-gradient(#434343 0%, #0d0d0d 100%);
     --boxBg: #2f2f2f;
     --inTopBg: #434343;
@@ -17,11 +18,13 @@ const GlobalStyle = createGlobalStyle`
     --CustBorder:#242627;  
     --CustInfoHead:#4f5355;  
     --addCustmodalBg:rgb(60 60 60 / 50%);  
+    --profileMsgBg:inset 0px 0px 10px 0px rgb(0 0 0 / 49%);  
     color:#fff;   
   }
   [data-theme="light"] {
     --fg: #242627;
     --bg: #D9D9D9;
+    --profilebg: rgb(217 217 217 / 90%);
     --headerBg: linear-gradient(#fff 0%, #ddd 100%); 
     --boxBg: #ebebeb;
     --inTopBg: #F0F0F0;
@@ -32,6 +35,7 @@ const GlobalStyle = createGlobalStyle`
     --CustBorder:#D0D0D0; 
     --CustInfoHead:#979797;  
     --addCustmodalBg:rgb(255 255 255 / 29%);  
+    --profileMsgBg:inset 0px 0px 10px 0px rgb(0 0 0 / 13%);  
     color:#242627;
  
   }
