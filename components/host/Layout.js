@@ -81,7 +81,7 @@ const Layout = (props) => {
                     <FlexHLeft className="gap">
                         <SidemenuParentStyle>
                             <SidemenuStyle>
-                                <Link href={`${router.pathname}?addguest=addguest`} as={`${router.pathname}/addguest`}>
+                                <Link href={`${router.pathname}?addguest=addguest`}>
                                     <AddClientStyle>
                                         <b >
                                             +
@@ -91,9 +91,16 @@ const Layout = (props) => {
                                 </Link>
 
                                 <SidemenuTextStyle>
-                                    <h1>Queue</h1>
-                                    <a href="#">Hold</a>
-                                    <a href="#">History</a>
+                                    <Link href="home">
+                                        <h1>Queue</h1>
+                                    </Link>
+
+                                    <Link href="hold">
+                                        <a href="#">Hold</a>
+                                    </Link>
+                                    <Link href="history">
+                                        <a href="#">History</a>
+                                    </Link>
                                     <a href="#">Tables</a>
                                 </SidemenuTextStyle>
                             </SidemenuStyle>

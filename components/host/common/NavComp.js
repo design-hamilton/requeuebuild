@@ -3,7 +3,7 @@ import { NavTopStyle, NavBotStyle } from '../styled/common.styled';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-const NavComp = ({ title ,handleToggle}) => {
+const NavComp = ({ title ,handleToggle , home}) => {
 
     const ttl = title.toLowerCase();
 
@@ -12,13 +12,13 @@ const NavComp = ({ title ,handleToggle}) => {
     const chaircounts = [{ name: "1" }, { name: "2" }, { name: "3" }, { name: "4" }, { name: "5" }, { name: "6" }, { name: "7" }, { name: "8" }, { name: "9" }, { name: "ALL" }];
 
     const _list = chaircounts.map(l => <p className={l.name === chaircount ? "active" : ""} key={l.name} onClick={() => setChaircount(l.name)}>{l.name}</p>)
-
+ 
 
     return (
         <>
             <NavTopStyle>
                 <span>
-                    <Link href="home"  >
+                    <Link href={home}>
                         <FaBars />
                     </Link>
 

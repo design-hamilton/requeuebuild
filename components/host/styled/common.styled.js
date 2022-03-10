@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const HeaderStyle = styled.header`
+export const HeaderStyle = styled.header `
 width: 100%;
 height: 70px;
 background: var(--headerBg);
@@ -17,7 +17,7 @@ z-index:9;
     }
 } 
 `
-export const SidemenuParentStyle = styled.div` 
+export const SidemenuParentStyle = styled.div ` 
 height:calc(100vh - 70px);
 width: 100%;
 max-width: 190px;
@@ -25,7 +25,7 @@ justify-content: space-between;
 flex-direction: column;
 display: flex;
 `
-export const SidemenuStyle = styled.div`
+export const SidemenuStyle = styled.div `
 width:100%; 
 height: 503px;
 border-radius: 17px;
@@ -40,7 +40,7 @@ padding:20px;
 // animation: fadein 0.5s;
 
 `
-export const AddClientStyle = styled.div`
+export const AddClientStyle = styled.div `
 width: 100%;
 height: 180px;
 border-radius: 19px;
@@ -62,7 +62,7 @@ strong{
     font-weight: 400;
 }
 `
-export const ProfileHead = styled.div`
+export const ProfileHead = styled.div `
 width: 100%;
 max-width: 190px;
 flex-direction: row;
@@ -84,7 +84,7 @@ font-weight: 600;
 font-size: 15px;
 }
 `
-export const SearchNumberStyle = styled.div`
+export const SearchNumberStyle = styled.div `
 width:100%;
 max-width: 300px;
 height: 41px;
@@ -93,7 +93,7 @@ padding:10px;
 background: var(--boxBg);
 display: inline-flex;  
 `
-export const HeadIconStyle = styled.div`
+export const HeadIconStyle = styled.div `
 width: 40px;
 height: 41px;
 border-radius: 5px;
@@ -112,12 +112,12 @@ height: 22px !important;
   color:var(--boxBg);
 }
 `
-export const PageNameStyle = styled.h1`
+export const PageNameStyle = styled.h1 `
 margin: 0px;
 width: 100%;
 text-align: center;
 `
-export const SideContHoldStyle = styled.div`
+export const SideContHoldStyle = styled.div `
 display: flex;
 justify-content: space-between;
 gap: 15px;
@@ -126,7 +126,7 @@ max-width: 390px;
 padding-left: 10%;
 `
 
-export const OfflineStyle = styled.div`
+export const OfflineStyle = styled.div `
 width: 100%;
 // height: 102px;
 background: var(--boxBg);
@@ -145,7 +145,7 @@ color: #7f8384;
 margin:0px;
 }
 `
-export const SidemenuTextStyle = styled.div`
+export const SidemenuTextStyle = styled.div `
     text-align: center;
     gap: 40px;
     flex-flow: wrap;
@@ -174,7 +174,7 @@ text-decoration:none;
 font-size:16px;   
  }
 `
-export const MessageStyle = styled.div`
+export const MessageStyle = styled.div `
 width: 100%; 
 background: var(--boxBg);
 text-align:center;
@@ -188,7 +188,7 @@ margin:0px;
 text-align:center;      
 } 
 `
-export const TeaxtAreaStyle = styled.textarea`
+export const TeaxtAreaStyle = styled.textarea `
 width: 100%; 
 background: var(--bg); 
 height: 138px;
@@ -206,13 +206,13 @@ border: none;
 }
 
 `
-export const PromptStyle = styled.p` 
+export const PromptStyle = styled.p ` 
 font-weight: normal;
 font-size: 14px;
 color: #EF5E82;
 display: block;
 `
-export const ULStyle = styled.ul` 
+export const ULStyle = styled.ul ` 
 list-style:none;
 width:35%;
 text-align:left;
@@ -227,7 +227,7 @@ cursor:pointer;
     }
 }
 `
-export const SubmitStyle = styled.button` 
+export const SubmitStyle = styled.button ` 
 width: 131px;
 height: 99px;
 border-radius: 10px;
@@ -235,7 +235,7 @@ background: var(--bg);
 color:var(--fg);
 border:none; 
 `
-export const MsgCloseStyle = styled.div` 
+export const MsgCloseStyle = styled.div ` 
 position: absolute;
 right: 30px;
 top: 30px;
@@ -243,18 +243,18 @@ font-size: 30px;
 cursor:pointer;
 `
 
-export const PeraFoot = styled.p`
+export const PeraFoot = styled.p `
 text-align: left;
 color: #fff;
 margin:0px;
 line-height: 1;
 font-size:12px;
 `
-export const LogoFoot = styled.img`
+export const LogoFoot = styled.img `
 width:75px;
 object-fit:contain;
 `
-export const NavTopStyle = styled.div`
+export const NavTopStyle = styled.div `
 background:var(--inTopBg);
 padding:15px; 
 display: flex;
@@ -280,7 +280,7 @@ span{
     cursor:pointer;
 }
 `
-export const NavBotStyle = styled.div`
+export const NavBotStyle = styled.div `
 background:var(--inBotBgTrans);
 padding:15px;  
 border-radius: 0px 0px 16px 16px;  
@@ -313,9 +313,10 @@ span{
 `
 
 
-export const ParentCustButtonsStyle = styled.div`
+export const ParentCustButtonsStyle = styled.div `
 width: auto;
-height: calc(100% - 10px); 
+/* height: calc(100% - 10px);  */
+height:fit-content;
 position:absolute;
 right:0px;
 top:5px;
@@ -326,7 +327,7 @@ z-index:-1;
 max-height: 235px;
 z-index:-1;
 `
-export const SeatButtonStyle = styled.button`
+export const SeatButtonStyle = styled.button `
 width: 232px;
 height: 78px; 
 background: #04d1a8; 
@@ -336,7 +337,7 @@ font-size:20px;
 float: right;
 clear: both;
 `
-export const HoldButtonStyle = styled.button`
+export const HoldButtonStyle = styled.button `
 width: 232px;
 height: 78px;
 background: #fba842; 
@@ -346,7 +347,7 @@ font-size:20px;
 float: right;
 clear: both;
 `
-export const CancelButtonStyle = styled.button`
+export const CancelButtonStyle = styled.button `
 width: 232px;
 height: 78px;
 background: #EF5E82; 
@@ -356,7 +357,7 @@ font-size:20px;
 float: right;
 clear: both;
 `
-export const CustBoxStyle = styled.div`
+export const CustBoxStyle = styled.div `
 width: calc(100% - 15px);
 min-height: 246px;
 border-radius: 16px;
@@ -369,7 +370,7 @@ transition:0.4s;
 z-index:0;
 `
 
-export const ParentCustBoxStyle = styled.div`
+export const ParentCustBoxStyle = styled.div `
 width: 100%;
 height: auto; 
 position:relative;
@@ -798,7 +799,7 @@ height:calc(100vh - 70px);
         ${`${CustBoxStyle}{
               transform: translate(-330px);
               }`
-    }
+        }
     }
 }
 &.grid{
@@ -1255,4 +1256,72 @@ line-height: 22px;
 text-align: left;
 float:left;
 padding: 10px 20px;
+`
+export const Hold = styled.div`
+   .list{ 
+        ${`${ParentCustButtonsStyle}{
+            height:calc(100% - 10px);
+            }`
+        } 
+            .edit{
+        ${`${CustBoxStyle}{
+              transform:translate(-210px);
+              }`
+        }
+    }    
+    } 
+ ${`${HeaderStyle}{
+           background:linear-gradient(#fba842 0%, #7e5421 100%);
+        }`
+    }
+ ${`${HoldButtonStyle}{
+          display:none;
+        }`
+    } 
+     ${`${SeatButtonStyle}{
+         min-height:100px;
+        }`
+    }  
+ ${`${CancelButtonStyle}{
+         min-height:100px;
+        }`
+    }   
+`
+
+export const History = styled.div` 
+   .list{ 
+        ${`${ParentCustButtonsStyle}{
+            height:calc(100% - 10px);
+            }`
+        }
+    .edit{
+        ${`${CustBoxStyle}{
+              transform: translate(-200px);
+              }`
+            }
+        }
+        ${`${HoldButtonStyle}{
+            width: 230px;
+        }`
+    }       
+    }
+
+ ${`${HeaderStyle}{
+          background: linear-gradient(#08d0ff 0%, #046880 100%);
+        }`
+    }
+ ${`${SeatButtonStyle}{
+          display:none;
+        }`
+    }  
+ ${`${CancelButtonStyle}{
+          display:none;
+        }`
+    }  
+     ${`${HoldButtonStyle}{
+         min-height:150px;
+           height: 100%;
+        }`
+    }   
+
 `

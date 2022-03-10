@@ -17,7 +17,7 @@ const Outside = ({ TopTitle, w100 }) => {
 
     return (
         <>
-            <NavComp title={TopTitle} handleToggle={handleToggle}></NavComp>
+            <NavComp home="home" title={TopTitle} handleToggle={handleToggle}></NavComp>
             <>
                 {w100 ?
 

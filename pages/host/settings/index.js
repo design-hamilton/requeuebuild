@@ -16,6 +16,7 @@ import { OpeningInputModal } from '../../../components/host/common/input/Opening
 import { ClosingInputModal } from '../../../components/host/common/input/ClosingInputModal';
 import DaysModal from '../../../components/host/common/DaysModal';
 import OpeningAndClosingDays from '../../../components/host/common/OpeningAndClosingDays';
+import useLocalStorage from '../../../helpers/useLocalStorage';
 
 
 Modal.setAppElement('#__next');
@@ -126,12 +127,13 @@ const index = () => {
         // setAdditionaldays(delete additionaldays[i])
     }
 
-
+  
+ 
     return (
         <>
             <div className="container pb-4">
                 <FlexHspace className="mt-5 settings">
-                    <Link href="profile">
+                    <Link href={'/host/home?profile=profile'}>
                         <div className="bck" ><FaChevronLeft className="v_middle" /> <span className="v_middle">Go Back</span></div>
                     </Link>
                     {/* <div className="bck" onClick={() => router.back()}><FaChevronLeft className="v_middle" /> <span className="v_middle">Go Back</span></div> */}

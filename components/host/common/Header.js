@@ -7,18 +7,21 @@ import { useState, useEffect } from 'react';
 import PhoneNumber from './input/PhoneNumber'; 
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import useLocalStorage from '../../../helpers/useLocalStorage';
 
 
 export default function Headers(props) {
     const router = useRouter();
-
+const handleSetLastPage = () => { 
+// useLocalStorage("lastPage", router.pathname); 
+}
     return (
         <>
             <HeaderStyle>
                 <div className="container">
                     <FlexHLeft className="gap">
-                        <Link href={`?profile=profile`} as={`profile`}>
-                            <ProfileHead>
+                        <Link href={`?profile=profile`}  >
+                            <ProfileHead onClick={handleSetLastPage}>
                                 <FaRegUserCircle  /> <span>Profile</span> 
                             </ProfileHead>
                         </Link>
