@@ -1325,3 +1325,10 @@ export const History = styled.div`
     }   
 
 `
+
+export const QueueMain = styled.div`  
+    ${`${ParentCustButtonsStyle}{
+        height:calc(100% - 10px);
+        }`
+    } 
+`

@@ -6,7 +6,7 @@ import Message from '../../../components/host/common/Message';
 import Modal from '../../../components/host/common/Modal';
 import Outside from '../../../components/host/common/Outside';
 // import Outside from '../../../components/host/common/Outside';
-import { Home2Parent, HomeSingle } from '../../../components/host/styled/common.styled';
+import { Home2Parent, HomeSingle, QueueMain } from '../../../components/host/styled/common.styled';
 import useLocalStorage from "../../../helpers/useLocalStorage";
  
 
@@ -42,6 +42,7 @@ const index = () => {
 
   return (
     <>
+    <QueueMain>
       <Layout
         pagename="Queue"
         msg={() => { setMsg(msg === true ? false : true); console.log(msg);}}  
@@ -76,6 +77,7 @@ const index = () => {
           </div>
         }
       />
+      </QueueMain>
     </>
   )
 }
