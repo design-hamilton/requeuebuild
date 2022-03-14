@@ -19,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
     --CustInfoHead:#4f5355;  
     --addCustmodalBg:rgb(60 60 60 / 50%);  
     --profileMsgBg:inset 0px 0px 10px 0px rgb(0 0 0 / 49%);  
+    --tablePageBg:#3C3C3C;  
     color:#fff;   
   }
   [data-theme="light"] {
@@ -35,9 +36,9 @@ const GlobalStyle = createGlobalStyle`
     --CustBorder:#D0D0D0; 
     --CustInfoHead:#979797;  
     --addCustmodalBg:rgb(255 255 255 / 29%);  
-    --profileMsgBg:inset 0px 0px 10px 0px rgb(0 0 0 / 13%);  
-    color:#242627;
- 
+    --profileMsgBg:inset 0px 0px 10px 0px rgb(0 0 0 / 13%);
+    --tablePageBg:#EBEBEB;  
+    color:#242627; 
   }
 `
 

@@ -101,7 +101,9 @@ const Layout = (props) => {
                                     <Link href="history">
                                         <a href="#">History</a>
                                     </Link>
-                                    <a href="#">Tables</a>
+                                    <Link href="table">
+                                        <a href="#">Tables</a>
+                                    </Link>
                                 </SidemenuTextStyle>
                             </SidemenuStyle>
                             <FlexH className="mt-4 mb-3">
