@@ -20,6 +20,8 @@ const GlobalStyle = createGlobalStyle`
     --addCustmodalBg:rgb(60 60 60 / 50%);  
     --profileMsgBg:inset 0px 0px 10px 0px rgb(0 0 0 / 49%);  
     --tablePageBg:#3C3C3C;  
+    --gredientTable:linear-gradient(transparent 0%, transparent 15%, #242627 100%); 
+    --tableSelectionfilterBg:#3D4245; 
     color:#fff;   
   }
   [data-theme="light"] {
@@ -38,6 +40,8 @@ const GlobalStyle = createGlobalStyle`
     --addCustmodalBg:rgb(255 255 255 / 29%);  
     --profileMsgBg:inset 0px 0px 10px 0px rgb(0 0 0 / 13%);
     --tablePageBg:#EBEBEB;  
+    --gredientTable:linear-gradient(transparent 0%,transparent 15%,#b4b4b4 100%); 
+    --tableSelectionfilterBg:#f2f2f2; 
     color:#242627; 
   }
 `

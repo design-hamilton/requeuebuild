@@ -1307,26 +1307,74 @@ export const TableFilterMain = styled.div`
   height: 105px;
   flex-direction: row;
   text-align: center;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   display: flex;
   border-radius: 0px 0px 17px 17px;
-  background: linear-gradient(transparent 0%, transparent 15%, #242627 100%);
+  background: var(--gredientTable);
+  padding: 25px 20px;
+  gap: 15px;
+  flex-wrap:wrap;
   ${`${StyledInputModal}{
         max-width:150px;
         margin-top:0px;
         border-radius: 8px;
-        background: #3b3b3b;
-        border: 2px solid #5e6569;
+        background: transparent;
+        border: 2px solid var(--tableSelectionfilterBg);
         padding: 15px;
         }`}
+      ${`${NavBotStyle}{
+        background: transparent;
+        backdrop-filter:none;
+        align-self: center;
+        top: 0;
+        padding: 0 15px;
+        gap: 15px;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        p{
+          padding: 15px 15px;
+          font-size: 16px;
+          cursor: pointer;
+          background: var(--bg);
+          border-radius: 10px;
+          min-width: 80px;
+          
+            &.active{
+              background:#7537BE;
+              color:#fff;
+            }
+          }
+        }`}
+        
   h1 {
     margin: 0px;
     line-height: 0;
+    cursor: pointer;
+  }
+  &.expand{
+    height:auto;
+    .insi{
+      width:100%;
+      display:flex;
+      gap:15px;
+    }
   }
 `;
 export const SideBarParentTable = styled.div`
-  width: 275px;
+  width: 325px;
+`;
+export const BgSelectable = styled.div`
+ background:var(--tableSelectionfilterBg);
+    padding: 15px 5px;
+    border-radius: 15px;
+    ${`${NavBotStyle}{
+        p{
+           font-size: 14px;
+           min-width: 85px;
+          }
+        }`}
 `;
 export const BodyTable = styled.div`
   width: 100%;
@@ -1346,4 +1394,10 @@ export const FlexTableHeaderCloseParent = styled.div`
     font-size: 30px;
     cursor: pointer;
   }
+`;
+export const SmallSummary = styled.div`
+  width: 262px;
+height: 178px;
+border-radius: 16px;
+background: linear-gradient(#242627 0%, #3c3c3c 100%);
 `;
