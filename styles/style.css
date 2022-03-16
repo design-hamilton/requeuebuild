@@ -2039,3 +2039,14 @@ button {
 .text-danger {
     color: #EF5E82;
 }
+.mt--50px{
+    margin-top: -50px;
+}
+.mt--50px .img-circle{
+    width: 80px;
+    height: 80px;
+    margin: 0; 
+    border-radius: 50%;
+    border: 2px solid var(--fg);
+
+}

@@ -22,6 +22,8 @@ const GlobalStyle = createGlobalStyle`
     --tablePageBg:#3C3C3C;  
     --gredientTable:linear-gradient(transparent 0%, transparent 15%, #242627 100%); 
     --tableSelectionfilterBg:#3D4245; 
+    --gredientSideBg:linear-gradient(#242627 0%, transparent 100%); 
+
     color:#fff;   
   }
   [data-theme="light"] {
@@ -42,6 +44,7 @@ const GlobalStyle = createGlobalStyle`
     --tablePageBg:#EBEBEB;  
     --gredientTable:linear-gradient(transparent 0%,transparent 15%,#b4b4b4 100%); 
     --tableSelectionfilterBg:#f2f2f2; 
+    --gredientSideBg:linear-gradient(#b4b4b4 0%, transparent 100%); 
     color:#242627; 
   }
 `

@@ -1314,7 +1314,7 @@ export const TableFilterMain = styled.div`
   background: var(--gredientTable);
   padding: 25px 20px;
   gap: 15px;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   ${`${StyledInputModal}{
         max-width:150px;
         margin-top:0px;
@@ -1323,7 +1323,7 @@ export const TableFilterMain = styled.div`
         border: 2px solid var(--tableSelectionfilterBg);
         padding: 15px;
         }`}
-      ${`${NavBotStyle}{
+  ${`${NavBotStyle}{
         background: transparent;
         backdrop-filter:none;
         align-self: center;
@@ -1353,12 +1353,12 @@ export const TableFilterMain = styled.div`
     line-height: 0;
     cursor: pointer;
   }
-  &.expand{
-    height:auto;
-    .insi{
-      width:100%;
-      display:flex;
-      gap:15px;
+  &.expand {
+    height: auto;
+    .insi {
+      width: 100%;
+      display: flex;
+      gap: 15px;
     }
   }
 `;
@@ -1366,10 +1366,10 @@ export const SideBarParentTable = styled.div`
   width: 325px;
 `;
 export const BgSelectable = styled.div`
- background:var(--tableSelectionfilterBg);
-    padding: 15px 5px;
-    border-radius: 15px;
-    ${`${NavBotStyle}{
+  background: var(--tableSelectionfilterBg);
+  padding: 15px 5px;
+  border-radius: 15px;
+  ${`${NavBotStyle}{
         p{
            font-size: 14px;
            min-width: 85px;
@@ -1396,8 +1396,53 @@ export const FlexTableHeaderCloseParent = styled.div`
   }
 `;
 export const SmallSummary = styled.div`
-  width: 262px;
-height: 178px;
-border-radius: 16px;
-background: linear-gradient(#242627 0%, #3c3c3c 100%);
+  width: 100%;
+  height: 150px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 10px 15px 15px 15px;
+  background:var(--gredientSideBg);
+  p {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0px;
+    &.busy {
+      color: #ef5e82;
+    }
+    &.available {
+      color: #04d1a8;
+    }
+    span {
+      width: 40px;
+      color: var(--fg);
+      text-align: center;
+    }
+  }
+  .flxzSn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0px 5px;
+    width: 100%;
+    p{
+      width:50%;
+      font-weight: normal;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  width: 50%;
+  text-align: left;
+  padding: 5px 0px;
+  display: block;
+    }
+  }
 `;
+export const NameInSUmmarySmall = styled.h3`
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: 0.01em;
+  margin: 10px 0px;
+`;
+ 
