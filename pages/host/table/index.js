@@ -5,6 +5,8 @@ import { BodyTable, FlexTableHeaderCloseParent, SideBarParentTable,SmallSummary,
 import { FlexHLeft } from '../../../components/host/styled/global.styled'
 import { VscChromeClose } from 'react-icons/vsc';
 import SmallSummaryTable from '../../../components/host/common/SmallSummaryTable';
+import LargeSummaryTable from '../../../components/host/common/LargeSummaryTable';
+import TablesGrid from '../../../components/host/common/TablesGrid';
 function index() {
   return (
     <>
@@ -26,13 +28,14 @@ function index() {
                 {/* <SmallSummaryTable personImg="../img/Profile.png" personName="KHALED ALQattan" inside="1" familysingle="Family" chairs="4" seatingarea="Ground Floor"/> */}
               </div>
 
-              <SmallSummaryTable totaltablescount="30" busycount="25" availablecount="5"/>
+              <LargeSummaryTable tableno="301" inside="1" familysingle="Family" chairs="4" seatingarea="Ground Floor"/>
 
             </SideBarParentTable>
             <BodyTable>
               <TableHeaderParent>
                   <TableFilter></TableFilter>
               </TableHeaderParent>
+              <TablesGrid/>
             </BodyTable>
           </FlexHLeft>
         </div>

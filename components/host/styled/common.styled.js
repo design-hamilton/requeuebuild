@@ -1299,9 +1299,10 @@ export const QueueMain = styled.div`
 export const TablePage = styled.div`
   height: 100vh;
   background: var(--tablePageBg);
+  overflow-y: auto;
 `;
 export const TableHeaderParent = styled.div`
-  height: 105px;
+  /* height: 105px; */
 `;
 export const TableFilterMain = styled.div`
   height: 105px;
@@ -1403,7 +1404,7 @@ export const SmallSummary = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   padding: 10px 15px 15px 15px;
-  background:var(--gredientSideBg);
+  background: var(--gredientSideBg);
   p {
     display: flex;
     width: 100%;
@@ -1427,15 +1428,15 @@ export const SmallSummary = styled.div`
     justify-content: center;
     padding: 0px 5px;
     width: 100%;
-    p{
-      width:50%;
+    p {
+      width: 50%;
       font-weight: normal;
-  font-size: 15px;
-  letter-spacing: 0.01em;
-  width: 50%;
-  text-align: left;
-  padding: 5px 0px;
-  display: block;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      width: 50%;
+      text-align: left;
+      padding: 5px 0px;
+      display: block;
     }
   }
 `;
@@ -1445,4 +1446,88 @@ export const NameInSUmmarySmall = styled.h3`
   letter-spacing: 0.01em;
   margin: 10px 0px;
 `;
+export const LargeSummary = styled.div`
+  height: calc(100vh - 255px);
+  min-height: 383px;
+  border-radius: 23px;
+  ${`${SmallSummary}{
+         height:100%;  
+         display: flex;
+         padding: 20px;
+         gap: 20px;
+         justify-content: space-between;
+         padding-bottom:35px;
+         .tabNo{
+            font-weight: 900;
+            font-size: 26px;
+            letter-spacing: 0.01em; 
+            margin:0px;
+            width: auto;
+            display: block;
+         }
+         .availableImg{
+           height:170px;
+           text-align: center;
+           display: flex;
+           justify-content: center;
+           align-items: center; 
+           h1{ 
+              font-weight: normal;
+              font-size: 32px;
+              letter-spacing: 0.01em;
+              text-align: left;
+              color: #4be0c2;
+              text-shadow: 0px 0px 20px #242627;
+           }
+         }
+
+
+        }`}
+`;
+
+export const TablesGridParent = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding: 20px;
+`;
+
+export const TableGridChild = styled.div`
+  width: 180.25px;
+  height: 164.49px;
+  background: #ef5e82;
+  filter: drop-shadow(0px 3px 10px rgba(0, 0, 0, 0.34));
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 15px;
+  border-radius: 20px;
+  cursor:pointer;
+  transition: 0.1s;
+  color:#fff;
+  &.available{
+    background:#4be0c2;
+  }
+  &.selected{
+    background:#7537BE;
+  }
+  &:hover{
+    filter: brightness(1.1);
+    transition: 0.1s;
+  }
+`;
  
+export const TableNoInChild = styled.h1`
+  font-weight: 900;
+  font-size: 60px;
+  letter-spacing: 0.01em;
+  margin: 0px;
+`;
+export const ChairsInChild = styled.p`
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  margin: 0px;
+`;
