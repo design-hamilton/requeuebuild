@@ -6,7 +6,7 @@ const Input = (props) => {
              <LabelIcon>
                 {props.img}
              </LabelIcon> 
-            <LoginInput type={props.type} placeholder={props.title} />
+            <LoginInput type={props.type} name={props.name} defaultValue={props.value} placeholder={props.title} onChange={props.onChange} />
         </div>
     )
 }
