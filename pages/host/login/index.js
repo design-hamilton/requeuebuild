@@ -1,21 +1,21 @@
-import {
-  Bg,
-  LoginButton,
-  LoginVFlex,
-  FootPera,
-} from "../../../components/host/styled/login/login.styled";
+import {Bg,LoginButton,LoginVFlex,FootPera,} from "../../../components/host/styled/login/login.styled";
 import { FlexH, FlexV } from "../../../components/host/styled/global.styled";
 import LoginIntro from "../../../components/host/login/login";
 import Input from "../../../components/host/login/input";
-import {
-  faIdBadge,
-  faUser,
-  faUnlockAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import {faIdBadge,faUser,faUnlockAlt,} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useContext, useState } from "react"; 
+import { useRouter } from "next/router"; 
+import { userLogin } from "../../../helpers/apiLogin";
+import { SaveLocalStorage } from "../../../helpers/localStorage";
+import { GlobalContext } from "../../../contextApi/Provider";
 
-export default function login() {
+const login=()=> { 
+  
+  const { setAuthToken,authToken } = useContext(GlobalContext);
+ 
+
+  const router = useRouter()
   const [user, setUser] = useState({
     restId: 0,
     userName: "",
@@ -31,8 +31,22 @@ export default function login() {
   };
 
   const handleSubmit = () => {
-    console.log(user);
+    // authStore.login(user)
+    userLogin(user).then((response) => {
+      if(response.data.success){
+        let accessToken = response.data.data.acessToken;
+        // console.log(response);
+        SaveLocalStorage('token', accessToken);
+        // window.location.reload();
+        authToken[1](accessToken);
+        router.push('home');
+        console.log(authToken);
+      }
+    }).catch((error)=> {
+      console.log(error);
+    })
   };
+  // if(authToken) return router.push("home")
   return (
     <Bg>
       <LoginVFlex>
@@ -76,4 +90,4 @@ export default function login() {
     </Bg>
   );
 }
-//test
+export default login

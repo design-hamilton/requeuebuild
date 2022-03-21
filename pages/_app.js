@@ -1,6 +1,9 @@
 import '../styles/style.css'
 import { createGlobalStyle } from 'styled-components'
 import { ThemeProvider } from 'next-themes'
+import {GlobalContext, Provider} from '../contextApi/Provider'
+import { checkLogin } from '../helpers/checkLogin'
+import { useContext, useEffect } from 'react'
 
 // Your themeing variables
 const GlobalStyle = createGlobalStyle`
@@ -50,13 +53,16 @@ const GlobalStyle = createGlobalStyle`
 `
 
 export default function MyApp({ Component, pageProps }) {
+ 
+  
   return (
     <>
       <GlobalStyle />
       <ThemeProvider>
-        <Component {...pageProps} />
-        <div id="modal-root"></div>
-      </ThemeProvider>
+        <Provider>
+        <Component {...pageProps} />   
+        </Provider>
+      </ThemeProvider> 
     </>
   )
 }
