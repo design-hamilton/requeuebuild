@@ -10,7 +10,7 @@ import {BsChatRightText} from 'react-icons/bs';
 
  
 
-const CustList = () => {
+const CustList = (props) => {
     const [edit, setEdit] = useState(false);
     const [expand, setExpand] = useState(false);
 
@@ -30,20 +30,23 @@ const CustList = () => {
         <>
             <ParentCustBoxStyle className={edit === true ? "edit" : ""} >
                 <CustBoxStyle onClick={handleExpand}>
-                    <RqThumbStyle>REQUEUE</RqThumbStyle>
-                    <PriceThumbStyle>30 KWD</PriceThumbStyle>
-                    <SeqNumStyle># 1</SeqNumStyle>
+                    {props.hasApp? <RqThumbStyle>REQUEUE</RqThumbStyle>:''}
+                    {/* <PriceThumbStyle>30 KWD</PriceThumbStyle> */}
+                    {props.queueNumber?<SeqNumStyle># {props.queueNumber}</SeqNumStyle>:''}
                     <FlexHspace>
                         <FlexHspace className="justify-center">
-                            <IamgeAvatarStyle src="../img/avatar.png" />
+                            {props.photo? <IamgeAvatarStyle src={props.photo} /> : <IamgeAvatarStyle src="../img/avatar.png" />}
+                            
                             <TextDetailSmallStyle>
-                                <h1>OMAR ALQATTAN</h1>
-                                <a href="tel://+96590077889">+96590077889</a>
+                                
+                                <h1>{props.name}</h1>
+                                
+                                <a href={`tel://${props.phone}`}>{props.phone}</a>
                             </TextDetailSmallStyle>
                         </FlexHspace>
                         <ChairsStyle>
                             <div className="cont">
-                                <h2>2</h2>
+                                <h2>{props.gestNumber}</h2>
                                 <span>Chairs</span>
                                 <Edit onClick={(e)=>handleEdit(e)}>Edit</Edit>
                             </div> 
@@ -54,11 +57,11 @@ const CustList = () => {
                         <div>
                             <TileInfoStyle>
                                 <IoMdTime/> 
-                                <p>120 / 45 Min</p>
+                                <p>{props.queueTime}</p>
                             </TileInfoStyle>
                             <TileInfoStyle>
                                 <GoLocation/> 
-                                <p>100 M / 5 Min</p>
+                                <p>{props.distanceTime}</p>
                             </TileInfoStyle>
                             <TileInfoStyle>
                                 <IoMdCheckmarkCircleOutline className="check_color"/> 

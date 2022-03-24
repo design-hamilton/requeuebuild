@@ -7,14 +7,14 @@ import { GlobalContext } from '../../../contextApi/Provider';
 import { useRouter } from 'next/router';
 
 
-const Inside = ({ TopTitle, w100,pathInsideOutside }) => {
+const InsideHold = ({ TopTitle, w100 }) => {
     const router = useRouter();
-    const {insidequeue} = useContext(GlobalContext);   
+    const {insidehold} = useContext(GlobalContext);   
 
     const [inside, setInside] = useState([]) 
     useEffect(() => {
       return () => {
-        setInside(insidequeue[0])
+        setInside(insidehold[0])
       }
     });
     
@@ -30,14 +30,14 @@ const Inside = ({ TopTitle, w100,pathInsideOutside }) => {
     }
     
     const handleHome = () => {
-        router.push('home')
+        router.push('./')
     }
     
     const ins = inside.map((i,index) => <CustList key={index} hasApp={i.client.hasApp} queueNumber={i.queueNumber} photo={i.client.photo} name={i.client.name} phone={i.client.phone} gestNumber={i.gestNumber} queueTime={i.queueTime} distanceTime={i.distanceTime} ></CustList>)
  
     return (
         <>
-        <NavComp home={handleHome} title={TopTitle} handleToggle={handleToggle} pathinsideoutside="inside"></NavComp>
+        <NavComp home={handleHome} title={TopTitle} handleToggle={handleToggle}  pathinsideoutside="hold/inside"></NavComp>
         {inside.length > 0?
         <>
             {w100 ?
@@ -63,4 +63,4 @@ const Inside = ({ TopTitle, w100,pathInsideOutside }) => {
     )
 }
 
-export default Inside
+export default InsideHold

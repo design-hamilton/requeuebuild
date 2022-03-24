@@ -9,10 +9,8 @@ import Outside from '../../../components/host/common/Outside';
 import { Home2Parent, HomeSingle, QueueMain } from '../../../components/host/styled/common.styled';
 import useLocalStorage from "../../../helpers/useLocalStorage"; 
 
-const index = () => { 
- 
- 
 
+const index = () => {  
   const [grd, setGrd] = useLocalStorage("gridView");
   const [msg, setMsg] = useState(false);
   const [lst, setLst] = useState(grd);
@@ -26,7 +24,7 @@ const index = () => {
     setListViewCls(lst === true ? "active" : "");
     setGridViewCls(lst === true ? "" : "active");
     setSrlst(lst === true ? "list" : "grid");
-    
+
   });
 useEffect(() => {
   localStorage.setItem("gridView", lst); 

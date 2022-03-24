@@ -26,6 +26,10 @@ const PhoneNumber = () => {
         defaultCountry="KW"
         countries={["KW", "SA", "AE", "QA", "BH"]}
         />
+        // <>
+
+        //     <input  placeholder="Enter phone number" value={value} onChange={()=>setValue(value)}  className="PhoneInputInput"/>
+        // </>
     )
 }
 

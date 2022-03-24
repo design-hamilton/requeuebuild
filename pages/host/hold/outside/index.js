@@ -1,18 +1,16 @@
 
-import Layout from '../../../components/host/Layout';
-import Ofline from '../../../components/host/common/Offline';
+import Layout from '../../../../components/host/Layout';
+import Ofline from '../../../../components/host/common/Offline';
 import { useState, useEffect } from 'react';
-import Message from '../../../components/host/common/Message';
-// import Modal from '../../../components/host/common/Modal';
-import InsideHold from '../../../components/host/common/InsideHold';
-import OutsideHold from '../../../components/host/common/OutsideHold';
-import { Hold, Home2Parent, HomeSingle } from '../../../components/host/styled/common.styled';
-import useLocalStorage from "../../../helpers/useLocalStorage";
-
-const index = () => { 
+import Message from '../../../../components/host/common/Message';
+import Modal from '../../../../components/host/common/Modal';
+import OutsideHold from '../../../../components/host/common/OutsideHold';
+// import Outside from '../../../components/host/common/Outside';
+import { Home2Parent, HomeSingle, Hold } from '../../../../components/host/styled/common.styled';
+import useLocalStorage from "../../../../helpers/useLocalStorage";
  
 
-  
+const index = () => { 
   const [grd, setGrd] = useLocalStorage("gridView");
   const [msg, setMsg] = useState(false);
   const [lst, setLst] = useState(grd);
@@ -20,19 +18,20 @@ const index = () => {
   const [listViewCls, setListViewCls] = useState(); 
   const [gridViewCls, setGridViewCls] = useState(); 
   // const [showModal, setShowModal] = useState(false);
+ 
   const [srlst, setSrlst] = useState();
-  useEffect(() => {
+  useEffect(() => { 
     setIcn(msg === true ? "active" : "");
+    // setLst(localStorage.getItem('gridView')? false : localStorage.getItem('gridView'));
     setListViewCls(lst === true ? "active" : "");
     setGridViewCls(lst === true ? "" : "active");
-    setSrlst(lst === true ? "list" : "grid");
-    
+    setSrlst(lst === true ? "list" : "grid"); 
   });
-useEffect(() => {
-  localStorage.setItem("gridView", lst); 
-}, [lst]);
+  useEffect(() => {
+    localStorage.setItem("gridView", lst); 
+  }, [lst]);
   const handlecls = (e) => {
-    setMsg(msg === true ? false : true)
+    setMsg(msg === true ? false : true); 
   }
 
   const [selection, setSelection] = useState({ name: "Select All" });
@@ -40,14 +39,14 @@ useEffect(() => {
     setSelection(e);
   }
   const selections = [{ name: "Select All" }, { name: "Inside" }, { name: "Outside" }, { name: "Multiple Select" }];
- 
-   
+
   return (
+    <>
     <Hold>
       <Layout
         pagename="Hold"
         msg={() => { setMsg(msg === true ? false : true); console.log(msg);}}  
-        listView={() => { setLst(lst === true ? false : true); localStorage.setItem("gridView", lst === true ? false : true);  }}  
+        listView={() => { setLst(lst === true ? false : true); localStorage.setItem("gridView", lst === true ? false : true);  }}   
         listViewCls={listViewCls}   
         gridViewCls={gridViewCls}   
         clas={icn}
@@ -57,19 +56,19 @@ useEffect(() => {
             {msg === true ? <Message list={selections} value={selection.name} handleSelect={handleSelectselections} handleclose={handlecls} /> : ""}
               
             <Home2Parent className={srlst}>
-              <HomeSingle className="w-100 relative">
-                <InsideHold TopTitle="Inside" />
+              <HomeSingle className="w-100 wwfilter">
+                <OutsideHold TopTitle="Outside" w100={true}/>
               </HomeSingle>
-              <HomeSingle className="w-100 relative">
-                <OutsideHold TopTitle="Outside" />
-              </HomeSingle>
+               
             </Home2Parent>
+
+
  
           </div>
         }
       />
-     
-    </Hold>
+      </Hold>
+    </>
   )
 }
 

@@ -33,6 +33,8 @@ import { RiLogoutBoxLine } from "react-icons/ri";
 import ProfileMsg from "./common/ProfileMsg";
 import { GlobalContext } from "../../contextApi/Provider";
 import { checkLogin } from "../../helpers/checkLogin";
+import { GetLocalStorage, SaveLocalStorage } from "../../helpers/localStorage";
+import { queueList } from "../../helpers/apiCalls/apiGet";
 
 Modal.setAppElement("#__next");
 Modal.defaultStyles.overlay.backgroundColor = "transparent";
@@ -40,11 +42,15 @@ Modal.defaultStyles.overlay.backgroundColor = "transparent";
 const Layout = (props) => {
   const router = useRouter();
 
-  const { authToken, loading } = useContext(GlobalContext);
+  const { authToken, loading, insidequeue,outsidequeue,outsidehold,insidehold,outsidehistory,insidehistory} = useContext(GlobalContext);
 
-  useEffect(() => {
-    checkLogin(authToken, router, loading);
-  }, []);
+    useEffect(() => { 
+      checkLogin(authToken, router, loading, insidequeue, outsidequeue,outsidehold,insidehold,outsidehistory,insidehistory);   
+      // const interval = setTimeout(() => {
+        checkLogin(authToken, router, loading, insidequeue, outsidequeue,outsidehold,insidehold,outsidehistory,insidehistory);  
+      // }, 2000);
+      // return () => clearTimeout(interval); 
+    },[]);
 
   const [modalIsOpen, setIsOpen] = useState(false);
   function openModal() {
@@ -114,7 +120,6 @@ const Layout = (props) => {
   const handleSelectseatingthree = (e) => {
     setSeatingthree(e);
   };
-console.log(loading[0])
   return (
     <>
       {loading[0] === false ? (

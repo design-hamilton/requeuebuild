@@ -6,7 +6,7 @@ import {faIdBadge,faUser,faUnlockAlt,} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react"; 
 import { useRouter } from "next/router"; 
-import { userLogin } from "../../../helpers/apiLogin";
+import { userLogin } from "../../../helpers/apiCalls/apiPost";
 import { SaveLocalStorage } from "../../../helpers/localStorage";
 import { GlobalContext } from "../../../contextApi/Provider";
 

@@ -9,8 +9,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import useLocalStorage from '../../../helpers/useLocalStorage';
 
-
-export default function Headers(props) {
+const Headers = (props) => {
+// export default function Headers(props) {
     const router = useRouter();
 const handleSetLastPage = () => { 
 // useLocalStorage("lastPage", router.pathname); 
@@ -58,3 +58,4 @@ const handleSetLastPage = () => {
     )
 }
 
+export default Headers;

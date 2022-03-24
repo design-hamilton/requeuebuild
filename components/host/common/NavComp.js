@@ -3,9 +3,9 @@ import { NavTopStyle, NavBotStyle } from '../styled/common.styled';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-const NavComp = ({ title ,handleToggle , home}) => {
+const NavComp = ({ title ,handleToggle , home, pathinsideoutside}) => {
 
-    const ttl = title.toLowerCase();
+    // const ttl = pathinsideoutside.toString();
 
     const [chaircount, setChaircount] = useState("ALL");
 
@@ -18,12 +18,12 @@ const NavComp = ({ title ,handleToggle , home}) => {
         <>
             <NavTopStyle>
                 <span>
-                    <Link href={home}>
-                        <FaBars />
-                    </Link>
+                    {/* <Link href={home}> */}
+                        <FaBars onClick={home}/>
+                    {/* </Link> */}
 
                 </span>
-                <Link href={ttl}>
+                <Link href={pathinsideoutside}>
                     <p className="pointer">{title}</p>
                 </Link>
                 <h1>40</h1>

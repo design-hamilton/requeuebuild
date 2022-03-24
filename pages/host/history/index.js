@@ -4,8 +4,8 @@ import Ofline from '../../../components/host/common/Offline';
 import { useState, useEffect } from 'react';
 import Message from '../../../components/host/common/Message';
 // import Modal from '../../../components/host/common/Modal';
-import Inside from '../../../components/host/common/Inside';
-import Outside from '../../../components/host/common/Outside';
+import InsideHistory from '../../../components/host/common/InsideHistory';
+import OutsideHistory from '../../../components/host/common/OutsideHistory';
 import { History, Hold, Home2Parent, HomeSingle } from '../../../components/host/styled/common.styled';
 import useLocalStorage from "../../../helpers/useLocalStorage";
 
@@ -58,10 +58,10 @@ useEffect(() => {
               
             <Home2Parent className={srlst}>
               <HomeSingle className="w-100 relative">
-                <Inside TopTitle="Inside" />
+                <InsideHistory TopTitle="Inside" />
               </HomeSingle>
               <HomeSingle className="w-100 relative">
-                <Outside TopTitle="Outside" />
+                <OutsideHistory TopTitle="Outside" />
               </HomeSingle>
             </Home2Parent>
  

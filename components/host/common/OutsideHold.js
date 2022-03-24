@@ -7,14 +7,14 @@ import { GlobalContext } from '../../../contextApi/Provider';
 import { useRouter } from 'next/router';
 
 
-const Outside = ({ TopTitle, w100 }) => {
+const OutsideHold = ({ TopTitle, w100 }) => {
     const router = useRouter();
 
-    const {outsidequeue} = useContext(GlobalContext);   
+    const {outsidehold} = useContext(GlobalContext);   
     const [outside, setOutside] = useState([]) 
     useEffect(() => {
       return () => {
-        setOutside(outsidequeue[0])
+        setOutside(outsidehold[0])
       }
     });
 
@@ -28,12 +28,12 @@ const Outside = ({ TopTitle, w100 }) => {
         setFilter(!filter);
     }
     const handleHome = () => {
-        router.push('home')
+        router.push('./')
     }
     const out =  outside.map((i,index) => <CustList key={index}  hasApp={i.client.hasApp} queueNumber={i.queueNumber} photo={i.client.photo} name={i.client.name} phone={i.client.phone} gestNumber={i.gestNumber} queueTime={i.queueTime} distanceTime={i.distanceTime} ></CustList>)
     return (
         <>
-            <NavComp home={handleHome} title={TopTitle} handleToggle={handleToggle} pathinsideoutside="outside"></NavComp>
+            <NavComp home={handleHome} title={TopTitle} handleToggle={handleToggle} pathinsideoutside="hold/outside"></NavComp>
             {outside.length >0?
             <>
                 {w100 ?
@@ -57,4 +57,4 @@ const Outside = ({ TopTitle, w100 }) => {
     )
 }
 
-export default Outside
+export default OutsideHold
