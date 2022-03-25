@@ -9,12 +9,16 @@ import { useRouter } from 'next/router';
 
 const InsideHold = ({ TopTitle, w100 }) => {
     const router = useRouter();
-    const {insidehold} = useContext(GlobalContext);   
+    const {insidehold,statistics} = useContext(GlobalContext);   
 
     const [inside, setInside] = useState([]) 
+    const [insideholdstate, setInsideholdstate] = useState([])
+
     useEffect(() => {
       return () => {
         setInside(insidehold[0])
+        setInsideholdstate(statistics[0])
+
       }
     });
     
@@ -37,7 +41,7 @@ const InsideHold = ({ TopTitle, w100 }) => {
  
     return (
         <>
-        <NavComp home={handleHome} title={TopTitle} handleToggle={handleToggle}  pathinsideoutside="hold/inside"></NavComp>
+        <NavComp home={handleHome} count={insideholdstate.length > 0?insideholdstate.hold.inside:null} title={TopTitle} handleToggle={handleToggle}  pathinsideoutside="hold/inside"></NavComp>
         {inside.length > 0?
         <>
             {w100 ?

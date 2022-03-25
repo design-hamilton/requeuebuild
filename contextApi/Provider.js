@@ -11,11 +11,12 @@ export const Provider = ({children}) => {
     const [insidehold, setInsidehold] = useState([]); 
     const [outsidehistory, setOutsidehistory] = useState([]); 
     const [insidehistory, setInsidehistory] = useState([]); 
+    const [statistics, setStatistics] = useState([]); 
     const [loading, setLoading] = useState(true); 
 
     
   return (
-        <GlobalContext.Provider value={{user: [user, setUser], insidehold:[insidehold, setInsidehold], outsidehold:[outsidehold, setOutsidehold],insidehistory:[insidehistory, setInsidehistory], outsidehistory:[outsidehistory, setOutsidehistory], outsidequeue:[outsidequeue, setOutsidequeue], insidequeue:[insidequeue, setInsidequeue], authToken: [authToken, setAuthToken],loading: [loading, setLoading]}}>
+        <GlobalContext.Provider value={{user: [user, setUser], statistics: [statistics, setStatistics], insidehold:[insidehold, setInsidehold], outsidehold:[outsidehold, setOutsidehold],insidehistory:[insidehistory, setInsidehistory], outsidehistory:[outsidehistory, setOutsidehistory], outsidequeue:[outsidequeue, setOutsidequeue], insidequeue:[insidequeue, setInsidequeue], authToken: [authToken, setAuthToken],loading: [loading, setLoading]}}>
          {children}
         </GlobalContext.Provider>
   )

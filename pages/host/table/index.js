@@ -7,7 +7,16 @@ import { VscChromeClose } from 'react-icons/vsc';
 import SmallSummaryTable from '../../../components/host/common/SmallSummaryTable';
 import LargeSummaryTable from '../../../components/host/common/LargeSummaryTable';
 import TablesGrid from '../../../components/host/common/TablesGrid';
+import { useEffect, useState } from 'react';
+import { GetLocalStorage } from '../../../helpers/localStorage';
+
+
+
 function index() {
+  const [lastpage, setLastpage] = useState('home')
+      useEffect(() => { 
+          setLastpage(GetLocalStorage('lastPage')?GetLocalStorage('lastPage'):'home')
+      }, []);
   return (
     <>
       <TablePage>
@@ -16,7 +25,7 @@ function index() {
             <SideBarParentTable>
               <TableHeaderParent>
                 <FlexTableHeaderCloseParent>
-                  <Link href="home">
+                  <Link href={lastpage}>
                     <div className="close"><VscChromeClose /></div>
                   </Link>
                   <h1> Table Floor</h1>

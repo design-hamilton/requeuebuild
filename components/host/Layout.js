@@ -42,14 +42,14 @@ Modal.defaultStyles.overlay.backgroundColor = "transparent";
 const Layout = (props) => {
   const router = useRouter();
 
-  const { authToken, loading, insidequeue,outsidequeue,outsidehold,insidehold,outsidehistory,insidehistory} = useContext(GlobalContext);
+  const { authToken, loading, insidequeue,outsidequeue,outsidehold,insidehold,outsidehistory,insidehistory,statistics} = useContext(GlobalContext);
 
     useEffect(() => { 
-      checkLogin(authToken, router, loading, insidequeue, outsidequeue,outsidehold,insidehold,outsidehistory,insidehistory);   
-      // const interval = setTimeout(() => {
-        checkLogin(authToken, router, loading, insidequeue, outsidequeue,outsidehold,insidehold,outsidehistory,insidehistory);  
-      // }, 2000);
-      // return () => clearTimeout(interval); 
+      checkLogin(authToken, router, loading, insidequeue, outsidequeue,outsidehold,insidehold,outsidehistory,insidehistory,statistics);   
+      const interval = setInterval(() => {
+        checkLogin(authToken, router, loading, insidequeue, outsidequeue,outsidehold,insidehold,outsidehistory,insidehistory,statistics);  
+      }, 3000);
+      return () => clearInterval(interval); 
     },[]);
 
   const [modalIsOpen, setIsOpen] = useState(false);
@@ -120,6 +120,19 @@ const Layout = (props) => {
   const handleSelectseatingthree = (e) => {
     setSeatingthree(e);
   };
+  const Homepage = props.fromInner?props.fromInner+'home':'home';
+  const Holdpage = props.fromInner?props.fromInner+'hold':'hold';
+  const Historypage = props.fromInner?props.fromInner+'history':'history';
+  const Tablepage = props.fromInner?props.fromInner+'table':'table';
+
+  const isHomepage = router.asPath.includes(Homepage);
+  const isHoldpage = router.asPath.includes(Holdpage);
+  const isHistorypage = router.asPath.includes(Historypage);
+  const isTablepage = router.asPath.includes(Tablepage);
+
+  const handleSetLastPage = () => { 
+    SaveLocalStorage('lastPage', router.asPath);
+    }
   return (
     <>
       {loading[0] === false ? (
@@ -145,18 +158,33 @@ const Layout = (props) => {
                     </Link>
 
                     <SidemenuTextStyle>
-                      <Link href="home">
-                        <h1>Queue</h1>
+                      <Link href={Homepage}>
+                        {isHomepage?
+                        <h1>Queue</h1>:
+                        <a href="#">Queue</a>
+                        }
+                        {/* if(isHomepage){<h1>Queue</h1> } */}
                       </Link>
 
-                      <Link href="hold">
+                      <Link href={Holdpage}> 
+                        {isHoldpage?
+                        <h1>Hold</h1>:
                         <a href="#">Hold</a>
+                        }
                       </Link>
-                      <Link href="history">
+
+                      <Link href={Historypage}>
+                        {isHistorypage?
+                        <h1>History</h1>:
                         <a href="#">History</a>
+                        }
                       </Link>
-                      <Link href="table">
-                        <a href="#">Tables</a>
+
+                      <Link href={Tablepage} > 
+                        {isTablepage?
+                        <h1 onClick={handleSetLastPage}>Tables</h1>:
+                        <a href="#" onClick={handleSetLastPage}>Tables</a>
+                        }
                       </Link>
                     </SidemenuTextStyle>
                   </SidemenuStyle>
@@ -276,7 +304,7 @@ const Layout = (props) => {
                     </p>
                   </li>
                   <li className="list-unstyled-item">
-                    <Link href="settings">
+                    <Link href={props.fromInner?props.fromInner+'settings':'settings'}>
                       <ProfilePopUpButton>
                         {" "}
                         <i className="v_middle">

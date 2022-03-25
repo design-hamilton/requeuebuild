@@ -9,12 +9,16 @@ import { useRouter } from 'next/router';
 
 const InsideHistory = ({ TopTitle, w100 }) => {
     const router = useRouter();
-    const {insidehistory} = useContext(GlobalContext);   
+    const {insidehistory,statistics} = useContext(GlobalContext); 
+    const [insideholdstate, setInsideholdstate] = useState([])
+
 
     const [inside, setInside] = useState([]) 
     useEffect(() => {
       return () => {
         setInside(insidehistory[0])
+        setInsideholdstate(statistics[0])
+
       }
     });
     
@@ -37,7 +41,7 @@ const InsideHistory = ({ TopTitle, w100 }) => {
  
     return (
         <>
-        <NavComp home={handleHome} title={TopTitle} handleToggle={handleToggle} pathinsideoutside="history/inside"></NavComp>
+        <NavComp home={handleHome} count={insideholdstate.length > 0?insideholdstate.hold.inside:null} title={TopTitle} handleToggle={handleToggle} pathinsideoutside="history/inside"></NavComp>
         {inside.length > 0?
         <>
             {w100 ?

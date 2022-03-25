@@ -9,12 +9,14 @@ import { useRouter } from 'next/router';
 
 const Inside = ({ TopTitle, w100,pathInsideOutside }) => {
     const router = useRouter();
-    const {insidequeue} = useContext(GlobalContext);   
+    const {insidequeue,statistics} = useContext(GlobalContext);   
 
     const [inside, setInside] = useState([]) 
+    const [insidequeuestate, setInsidequeuestate] = useState([])
     useEffect(() => {
       return () => {
         setInside(insidequeue[0])
+        setInsidequeuestate(statistics[0])
       }
     });
     
@@ -37,7 +39,7 @@ const Inside = ({ TopTitle, w100,pathInsideOutside }) => {
  
     return (
         <>
-        <NavComp home={handleHome} title={TopTitle} handleToggle={handleToggle} pathinsideoutside="inside"></NavComp>
+        <NavComp home={handleHome} count={insidequeuestate.length > 0?insidequeuestate.queue.inside:null} title={TopTitle} handleToggle={handleToggle} pathinsideoutside="inside"></NavComp>
         {inside.length > 0?
         <>
             {w100 ?

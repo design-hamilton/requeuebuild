@@ -8,12 +8,13 @@ import PhoneNumber from './input/PhoneNumber';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import useLocalStorage from '../../../helpers/useLocalStorage';
+import { SaveLocalStorage } from '../../../helpers/localStorage';
 
 const Headers = (props) => {
 // export default function Headers(props) {
     const router = useRouter();
-const handleSetLastPage = () => { 
-// useLocalStorage("lastPage", router.pathname); 
+const handleSetLastPage = () => {  
+SaveLocalStorage('lastPage', router.asPath);
 }
     return (
         <>

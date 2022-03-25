@@ -50,6 +50,7 @@ const index = () => {
         listViewCls={listViewCls}   
         gridViewCls={gridViewCls}   
         clas={icn}
+        fromInner="../"
         body={
           <div className="body">
             <Ofline styled="true"></Ofline>

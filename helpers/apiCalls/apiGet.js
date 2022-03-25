@@ -2,7 +2,7 @@
 import axios from "../../config/instance"; 
 
 
-export const stats = async(at) => {  
+export const statsData = async(at) => {  
     const response = await axios.get("/queue/statistics",{
         headers: {
             "Content-Type": "application/json",

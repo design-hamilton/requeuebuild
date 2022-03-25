@@ -7,16 +7,26 @@ const {user, authToken} = useContext(GlobalContext);
 
 
 import {  useRouter } from "next/router";
-import { queueList,holdList,historyList } from "./apiCalls/apiGet";
+import { queueList,holdList,historyList, statsData } from "./apiCalls/apiGet";
 import { GetLocalStorage, RemoveLocalStorage } from "./localStorage";
 
-export const checkLogin = (authToken,router,loading,insidequeue,outsidequeue,outsidehold,insidehold,outsidehistory,insidehistory)=>{ 
+export const checkLogin = (authToken,router,loading,insidequeue,outsidequeue,outsidehold,insidehold,outsidehistory,insidehistory,statistics)=>{ 
     // RemoveLocalStorage("token");
     let token = GetLocalStorage('token'); 
     if(token){
         authToken[1](token);
         loading[1](false); 
        
+            statsData(token).then((response) => { 
+                let statData = response.data.data; 
+                if(response.data.success){ 
+                    statistics[1](statData); 
+                    console.log(statistics[0]);
+                } 
+              }).catch((error)=> {
+                console.log(error);  
+              }); 
+
             queueList(token).then((response) => { 
                 let outsidedata = response.data.data.outside;
                 let insidedata = response.data.data.inside;

@@ -17,6 +17,7 @@ import { ClosingInputModal } from '../../../components/host/common/input/Closing
 import DaysModal from '../../../components/host/common/DaysModal';
 import OpeningAndClosingDays from '../../../components/host/common/OpeningAndClosingDays';
 import useLocalStorage from '../../../helpers/useLocalStorage';
+import { GetLocalStorage } from '../../../helpers/localStorage';
 
 
 Modal.setAppElement('#__next');
@@ -76,7 +77,10 @@ const index = () => {
     const [showinside, setShowinside] = useState(false);
     const handelShowinside = (e) => { setShowinside(!showinside); }
 
-
+    const [lastpage, setLastpage] = useState()
+    useEffect(() => { 
+        setLastpage(GetLocalStorage('lastPage')?GetLocalStorage('lastPage'):'/host/home')
+    }, [])
 
 
 
@@ -133,7 +137,7 @@ const index = () => {
         <>
             <div className="container pb-4">
                 <FlexHspace className="mt-5 settings">
-                    <Link href={'/host/home?profile=profile'}>
+                    <Link href={lastpage+'?profile=profile'}>
                         <div className="bck" ><FaChevronLeft className="v_middle" /> <span className="v_middle">Go Back</span></div>
                     </Link>
                     {/* <div className="bck" onClick={() => router.back()}><FaChevronLeft className="v_middle" /> <span className="v_middle">Go Back</span></div> */}

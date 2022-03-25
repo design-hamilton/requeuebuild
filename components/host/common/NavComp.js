@@ -3,7 +3,7 @@ import { NavTopStyle, NavBotStyle } from '../styled/common.styled';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
-const NavComp = ({ title ,handleToggle , home, pathinsideoutside}) => {
+const NavComp = ({ title ,handleToggle , home, pathinsideoutside,count}) => {
 
     // const ttl = pathinsideoutside.toString();
 
@@ -26,7 +26,7 @@ const NavComp = ({ title ,handleToggle , home, pathinsideoutside}) => {
                 <Link href={pathinsideoutside}>
                     <p className="pointer">{title}</p>
                 </Link>
-                <h1>40</h1>
+                <h1>{count?count:'00'}</h1>
             </NavTopStyle>
 
             <NavBotStyle>

@@ -50,7 +50,7 @@ useEffect(() => {
         listView={() => { setLst(lst === true ? false : true); localStorage.setItem("gridView", lst === true ? false : true);  }}  
         listViewCls={listViewCls}   
         gridViewCls={gridViewCls}   
-        clas={icn}
+        clas={icn} 
         body={
           <div className="body">
             <Ofline styled="true"></Ofline>
