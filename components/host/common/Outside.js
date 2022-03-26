@@ -36,7 +36,7 @@ const Outside = ({ TopTitle, w100 }) => {
     const out =  outside.map((i,index) => <CustList key={index}  hasApp={i.client.hasApp} queueNumber={i.queueNumber} photo={i.client.photo} name={i.client.name} phone={i.client.phone} gestNumber={i.gestNumber} queueTime={i.queueTime} distanceTime={i.distanceTime} ></CustList>)
     return (
         <>
-            <NavComp home={handleHome} count={outsidequeuestate.length > 0?outsidequeuestate.queue.outside:null} title={TopTitle} handleToggle={handleToggle} pathinsideoutside="outside"></NavComp>
+            <NavComp home={handleHome} count={outside.length > 0?outside.length:null} title={TopTitle} handleToggle={handleToggle} pathinsideoutside="outside"></NavComp>
             {outside.length >0?
             <>
                 {w100 ?

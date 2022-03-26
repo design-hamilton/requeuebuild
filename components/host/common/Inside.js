@@ -39,7 +39,7 @@ const Inside = ({ TopTitle, w100,pathInsideOutside }) => {
  
     return (
         <>
-        <NavComp home={handleHome} count={insidequeuestate.length > 0?insidequeuestate.queue.inside:null} title={TopTitle} handleToggle={handleToggle} pathinsideoutside="inside"></NavComp>
+        <NavComp home={handleHome} count={inside.length > 0?inside.length:null} title={TopTitle} handleToggle={handleToggle} pathinsideoutside="inside"></NavComp>
         {inside.length > 0?
         <>
             {w100 ?

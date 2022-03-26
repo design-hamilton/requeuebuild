@@ -41,7 +41,7 @@ const InsideHistory = ({ TopTitle, w100 }) => {
  
     return (
         <>
-        <NavComp home={handleHome} count={insideholdstate.length > 0?insideholdstate.hold.inside:null} title={TopTitle} handleToggle={handleToggle} pathinsideoutside="history/inside"></NavComp>
+        <NavComp home={handleHome} count={inside.length > 0?inside.length:null} title={TopTitle} handleToggle={handleToggle} pathinsideoutside="history/inside"></NavComp>
         {inside.length > 0?
         <>
             {w100 ?

@@ -27,13 +27,20 @@ export const checkLogin = (authToken,router,loading,insidequeue,outsidequeue,out
                 console.log(error);  
               }); 
 
-            queueList(token).then((response) => { 
-                let outsidedata = response.data.data.outside;
+              queueList(token).then((response) => { 
+                // let outsidedata = response.data.data.outside;
                 let insidedata = response.data.data.inside;
+                if(response.data.success){  
+                    insidequeue[1](insidedata); 
+                } 
+              }).catch((error)=> {
+                console.log(error);  
+              }); 
+              queueList(token).then((response) => { 
+                let outsidedata = response.data.data.outside;
+                // let insidedata = response.data.data.inside;
                 if(response.data.success){ 
-                    outsidequeue[1](outsidedata);
-                    insidequeue[1](insidedata);
-                    // console.log(response.data); 
+                    outsidequeue[1](outsidedata); 
                 } 
               }).catch((error)=> {
                 console.log(error);  
