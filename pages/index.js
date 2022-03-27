@@ -1,9 +1,25 @@
-import styled from 'styled-components'
+import { useRouter } from "next/router" 
+import { useEffect } from "react";
+import { GetLocalStorage } from "../helpers/localStorage";
 
-const Title = styled.h1`
-  font-size: 50px; 
-`
 
-export default function Home() {
-  return <Title>My page</Title>
+// import React, { useEffect } from "react";
+// import Router from 'next/router'
+  
+export default function Home() { 
+  const router = useRouter();
+  useEffect(() => {
+    const pathname = router.pathname
+    if(pathname == '/' ){
+        router.push('home')
+    }
+  });
+return(
+  <>
+    <h1>load</h1>
+  </>
+)
 }
+
+
+

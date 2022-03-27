@@ -1,13 +1,13 @@
 
-import Layout from '../../../components/host/Layout';
-import Ofline from '../../../components/host/common/Offline';
+import Layout from '../../components/host/Layout';
+import Ofline from '../../components/host/common/Offline';
 import { useState, useEffect, useContext } from 'react';
-import Message from '../../../components/host/common/Message';
-// import Modal from '../../../components/host/common/Modal';
-import Inside from '../../../components/host/common/Inside';
-import Outside from '../../../components/host/common/Outside';
-import { Home2Parent, HomeSingle, QueueMain } from '../../../components/host/styled/common.styled';
-import useLocalStorage from "../../../helpers/useLocalStorage"; 
+import Message from '../../components/host/common/Message';
+// import Modal from '../../components/host/common/Modal';
+import Inside from '../../components/host/common/Inside';
+import Outside from '../../components/host/common/Outside';
+import { Home2Parent, HomeSingle, QueueMain } from '../../components/host/styled/common.styled';
+import useLocalStorage from "../../helpers/useLocalStorage"; 
 
 
 const index = () => {  

@@ -48,7 +48,7 @@ const Layout = (props) => {
       checkLogin(authToken, router, loading, insidequeue, outsidequeue,outsidehold,insidehold,outsidehistory,insidehistory,statistics);   
       const interval = setInterval(() => {
         checkLogin(authToken, router, loading, insidequeue, outsidequeue,outsidehold,insidehold,outsidehistory,insidehistory,statistics);  
-      }, 3000);
+      }, 4000);
       return () => clearInterval(interval); 
     },[]);
 

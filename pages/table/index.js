@@ -1,14 +1,14 @@
 
 import Link from 'next/link'
-import TableFilter from '../../../components/host/common/TableFilter'
-import { BodyTable, FlexTableHeaderCloseParent, SideBarParentTable,SmallSummary,TableHeaderParent, TablePage } from '../../../components/host/styled/common.styled'
-import { FlexHLeft } from '../../../components/host/styled/global.styled'
+import TableFilter from '../../components/host/common/TableFilter'
+import { BodyTable, FlexTableHeaderCloseParent, SideBarParentTable,SmallSummary,TableHeaderParent, TablePage } from '../../components/host/styled/common.styled'
+import { FlexHLeft } from '../../components/host/styled/global.styled'
 import { VscChromeClose } from 'react-icons/vsc';
-import SmallSummaryTable from '../../../components/host/common/SmallSummaryTable';
-import LargeSummaryTable from '../../../components/host/common/LargeSummaryTable';
-import TablesGrid from '../../../components/host/common/TablesGrid';
+import SmallSummaryTable from '../../components/host/common/SmallSummaryTable';
+import LargeSummaryTable from '../../components/host/common/LargeSummaryTable';
+import TablesGrid from '../../components/host/common/TablesGrid';
 import { useEffect, useState } from 'react';
-import { GetLocalStorage } from '../../../helpers/localStorage';
+import { GetLocalStorage } from '../../helpers/localStorage';
 
 
 

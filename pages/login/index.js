@@ -1,14 +1,14 @@
-import {Bg,LoginButton,LoginVFlex,FootPera,} from "../../../components/host/styled/login/login.styled";
-import { FlexH, FlexV } from "../../../components/host/styled/global.styled";
-import LoginIntro from "../../../components/host/login/login";
-import Input from "../../../components/host/login/input";
+import {Bg,LoginButton,LoginVFlex,FootPera,} from "../../components/host/styled/login/login.styled";
+import { FlexH, FlexV } from "../../components/host/styled/global.styled";
+import LoginIntro from "../../components/host/login/login";
+import Input from "../../components/host/login/input";
 import {faIdBadge,faUser,faUnlockAlt,} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext, useState } from "react"; 
 import { useRouter } from "next/router"; 
-import { userLogin } from "../../../helpers/apiCalls/apiPost";
-import { SaveLocalStorage } from "../../../helpers/localStorage";
-import { GlobalContext } from "../../../contextApi/Provider";
+import { userLogin } from "../../helpers/apiCalls/apiPost";
+import { SaveLocalStorage } from "../../helpers/localStorage";
+import { GlobalContext } from "../../contextApi/Provider";
 
 const login=()=> { 
   
@@ -77,7 +77,7 @@ const login=()=> {
         />
         <LoginButton onClick={handleSubmit}>Login</LoginButton>
         <FlexH className="mt-4 mb-3">
-          <img src="../../img/logo.png" />
+          <img src="../img/logo.png" />
           <FlexV>
             <FootPera>
               POWERED BY REQUEUE <br />

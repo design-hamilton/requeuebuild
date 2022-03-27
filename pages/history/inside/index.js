@@ -2,11 +2,9 @@
 import Layout from '../../../components/host/Layout';
 import Ofline from '../../../components/host/common/Offline';
 import { useState, useEffect } from 'react';
-import Message from '../../../components/host/common/Message';
-import Modal from '../../../components/host/common/Modal';
-import Inside from '../../../components/host/common/Inside';
-import Outside from '../../../components/host/common/Outside';
-import { Home2Parent, HomeSingle, QueueMain } from '../../../components/host/styled/common.styled';
+import Message from '../../../components/host/common/Message'; 
+import InsideHistory from '../../../components/host/common/InsideHistory'; 
+import { Home2Parent, HomeSingle,History} from '../../../components/host/styled/common.styled';
 import useLocalStorage from "../../../helpers/useLocalStorage";
 
 
@@ -42,14 +40,15 @@ const index = () => {
 
   return (
     <>
-      <QueueMain>
+       <History>
         <Layout
-          pagename="Queue"
+          pagename="History"
           msg={() => { setMsg(msg === true ? false : true); console.log(msg); }}
           listView={() => { setLst(lst === true ? false : true); localStorage.setItem("gridView", lst === true ? false : true); }}
           listViewCls={listViewCls}
           gridViewCls={gridViewCls}
           clas={icn}
+          fromInner="../"
           body={
             <div className="body">
               <Ofline styled="true"></Ofline>
@@ -57,27 +56,17 @@ const index = () => {
 
               <Home2Parent className={srlst}>
                 <HomeSingle className="w-100 wwfilter">
-                  <Inside TopTitle="Inside" w100={true} />
+                  <InsideHistory TopTitle="Inside" w100={true} />
                 </HomeSingle>
 
               </Home2Parent>
 
 
-
-
-
-
-              {/* <div>
-              <button onClick={() => setShowModal(true)}>Open Modal</button>
-              <Modal onClose={() => setShowModal(false)}
-                show={showModal} >
-                Hello from the modal!
-              </Modal>
-            </div> */}
+ 
             </div>
           }
         />
-      </QueueMain>
+      </History>
     </>
   )
 }

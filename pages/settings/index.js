@@ -1,23 +1,22 @@
 import { useRouter } from 'next/router'
-import { FlexHspace, FlexH } from '../../../components/host/styled/global.styled';
-import ThemeChanger from '../../../components/host/common/ThemeChanger';
+import { FlexHspace, FlexH } from '../../components/host/styled/global.styled';
+import ThemeChanger from '../../components/host/common/ThemeChanger';
 import { FaChevronLeft, FaRegPaperPlane } from 'react-icons/fa';
 import { MdSettings, MdOutlineNotificationsActive } from 'react-icons/md';
 import { GoPrimitiveDot } from 'react-icons/go';
-import { SettingsBox, GridForTwo, EditSetting, InputSettings, SaveSetting, StyledModalHeader, SpacedFlex, SaveModl, ModlTextarea, DangerPera } from '../../../components/host/styled/common.styled';
-import Switch from '../../../components/host/common/input/Switch';
+import { SettingsBox, GridForTwo, EditSetting, InputSettings, SaveSetting, StyledModalHeader, SpacedFlex, SaveModl, ModlTextarea, DangerPera } from '../../components/host/styled/common.styled';
+import Switch from '../../components/host/common/input/Switch';
 import { useState, useEffect } from 'react';
-import Select from '../../../components/host/common/input/Select';
+import Select from '../../components/host/common/input/Select';
 import Link from 'next/link';
 import Modal from 'react-modal';
 import { GrClose } from 'react-icons/gr';
 import { CgCloseO } from 'react-icons/cg';
-import { OpeningInputModal } from '../../../components/host/common/input/OpeningInputModal';
-import { ClosingInputModal } from '../../../components/host/common/input/ClosingInputModal';
-import DaysModal from '../../../components/host/common/DaysModal';
-import OpeningAndClosingDays from '../../../components/host/common/OpeningAndClosingDays';
-import useLocalStorage from '../../../helpers/useLocalStorage';
-import { GetLocalStorage } from '../../../helpers/localStorage';
+import { OpeningInputModal } from '../../components/host/common/input/OpeningInputModal';
+import { ClosingInputModal } from '../../components/host/common/input/ClosingInputModal';
+import DaysModal from '../../components/host/common/DaysModal';
+import OpeningAndClosingDays from '../../components/host/common/OpeningAndClosingDays'; 
+import { GetLocalStorage } from '../../helpers/localStorage';
 
 
 Modal.setAppElement('#__next');

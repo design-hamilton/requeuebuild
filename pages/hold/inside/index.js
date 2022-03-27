@@ -1,11 +1,13 @@
 
-import Layout from '../../../../components/host/Layout';
-import Ofline from '../../../../components/host/common/Offline';
+import Layout from '../../../components/host/Layout';
+import Ofline from '../../../components/host/common/Offline';
 import { useState, useEffect } from 'react';
-import Message from '../../../../components/host/common/Message'; 
-import InsideHistory from '../../../../components/host/common/InsideHistory'; 
-import { Home2Parent, HomeSingle,History} from '../../../../components/host/styled/common.styled';
-import useLocalStorage from "../../../../helpers/useLocalStorage";
+import Message from '../../../components/host/common/Message';
+import Modal from '../../../components/host/common/Modal';
+import InsideHold from '../../../components/host/common/InsideHold';
+import Outside from '../../../components/host/common/Outside';
+import { Home2Parent, HomeSingle,Hold} from '../../../components/host/styled/common.styled';
+import useLocalStorage from '../../../helpers/useLocalStorage';
 
 
 const index = () => {
@@ -40,9 +42,9 @@ const index = () => {
 
   return (
     <>
-       <History>
+       <Hold>
         <Layout
-          pagename="History"
+          pagename="Hold"
           msg={() => { setMsg(msg === true ? false : true); console.log(msg); }}
           listView={() => { setLst(lst === true ? false : true); localStorage.setItem("gridView", lst === true ? false : true); }}
           listViewCls={listViewCls}
@@ -56,7 +58,7 @@ const index = () => {
 
               <Home2Parent className={srlst}>
                 <HomeSingle className="w-100 wwfilter">
-                  <InsideHistory TopTitle="Inside" w100={true} />
+                  <InsideHold TopTitle="Inside" w100={true} />
                 </HomeSingle>
 
               </Home2Parent>
@@ -66,7 +68,7 @@ const index = () => {
             </div>
           }
         />
-      </History>
+      </Hold>
     </>
   )
 }
