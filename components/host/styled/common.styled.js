@@ -91,6 +91,7 @@ export const SearchNumberStyle = styled.div`
   padding: 10px;
   background: var(--boxBg);
   display: inline-flex;
+  position:relative;
 `;
 export const HeadIconStyle = styled.div`
   width: 40px;

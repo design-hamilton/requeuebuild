@@ -6,69 +6,100 @@ const {user, authToken} = useContext(GlobalContext);
 
 
 
+import { getCookie, setCookies } from "cookies-next";
 import {  useRouter } from "next/router";
-import { queueList,holdList,historyList, statsData } from "./apiCalls/apiGet";
+import { queueList,holdList,historyList, statsData, settingsData, countriesList, userByMobile, seatingArea } from "./apiCalls/apiGet";
 import { GetLocalStorage, RemoveLocalStorage } from "./localStorage";
 
-export const checkLogin = (authToken,router,loading,insidequeue,outsidequeue,outsidehold,insidehold,outsidehistory,insidehistory,statistics)=>{ 
+export const checkLogin = (authToken,router,loading,insidequeue,outsidequeue,outsidehold,insidehold,outsidehistory,insidehistory,settings,countries,seatingarea)=>{ 
     // RemoveLocalStorage("token");
-    let token = GetLocalStorage('token'); 
+    let token = getCookie('token'); 
     if(token){
         authToken[1](token);
         loading[1](false); 
-       
-            statsData(token).then((response) => { 
-                let statData = response.data.data; 
-                if(response.data.success){ 
-                    statistics[1](statData); 
-                    console.log(statistics[0]);
-                } 
-              }).catch((error)=> {
-                console.log(error);  
-              }); 
-
-              queueList(token).then((response) => { 
-                // let outsidedata = response.data.data.outside;
-                let insidedata = response.data.data.inside;
-                if(response.data.success){  
-                    insidequeue[1](insidedata); 
-                } 
-              }).catch((error)=> {
-                console.log(error);  
-              }); 
-              queueList(token).then((response) => { 
-                let outsidedata = response.data.data.outside;
+        
+              queueList(token).then((response) => {  
                 // let insidedata = response.data.data.inside;
-                if(response.data.success){ 
-                    outsidequeue[1](outsidedata); 
+                if(response.data.success){  
+                    insidequeue[1](response.data.data.inside); 
                 } 
               }).catch((error)=> {
                 console.log(error);  
               }); 
-
+              queueList(token).then((response) => { 
+                // let outsidedata = response.data.data.outside; 
+                if(response.data.success){ 
+                    outsidequeue[1](response.data.data.outside); 
+                } 
+              }).catch((error)=> {
+                console.log(error);  
+              });  
+              holdList(token).then((response) => {  
+                // let insideholddata = response.data.data.inside;
+                if(response.data.success){  
+                    insidehold[1](response.data.data.inside); 
+                } 
+              }).catch((error)=> {
+                console.log(error);  
+              });  
               holdList(token).then((response) => { 
-                let outsideholddata = response.data.data.outside;
-                let insideholddata = response.data.data.inside;
+                // let outsideholddata = response.data.data.outside; 
                 if(response.data.success){ 
-                    outsidehold[1](outsideholddata);
-                    insidehold[1](insideholddata);
-                    // console.log(response.data); 
+                    outsidehold[1](response.data.data.outside); 
                 } 
               }).catch((error)=> {
                 console.log(error);  
               }); 
-
-
               historyList(token).then((response) => { 
-                let outsidehistorydata = response.data.data.outside;
-                let insidehistorydata = response.data.data.inside;
+                // let outsidehistorydata = response.data.data.outside; 
                 if(response.data.success){ 
-                    outsidehistory[1](outsidehistorydata);
-                    insidehistory[1](insidehistorydata); 
+                    outsidehistory[1](response.data.data.outside); 
                 } 
               }).catch((error)=> {
                 console.log(error);  
               }); 
+              historyList(token).then((response) => { 
+                // let insidehistorydata = response.data.data.inside;
+                if(response.data.success){
+                    insidehistory[1](response.data.data.inside); 
+                } 
+              }).catch((error)=> {
+                console.log(error);  
+              }); 
+
+              settingsData(token).then((response) => {  
+                if(response.data.success){ 
+                    settings[1](response.data.data); 
+                } 
+              }).catch((error)=> {
+                console.log(error);  
+              }); 
+
+              countriesList(token).then((response) => {  
+                if(response.data.success){ 
+                  countries[1](response.data.data); 
+                } 
+              }).catch((error)=> {
+                console.log(error);  
+              });  
+
+
+              seatingArea(token).then((response) => {  
+                if(response.data.success){ 
+                  seatingarea[1](response.data.data);    
+                } 
+              }).catch((error)=> {
+                console.log(error);  
+              });  
+
+              // userByMobile(token).then((response) => {  
+              //   if(response.data.success){ 
+              //     // countries[1](response.data.data); 
+              //     console.log(response.data.data);  
+              //   } 
+              // }).catch((error)=> {
+              //   console.log(error);  
+              // });  
 
     }else{
         authToken[1]();

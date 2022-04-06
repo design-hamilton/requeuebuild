@@ -3,7 +3,7 @@ import {ULStyle} from '../../styled/common.styled';
  
 const Listing = ({listItem,handleSelect,value}) => {
 
-    const _listing = listItem.map(l=> <li className={l.name === value ? "active" : ""} key={l.name} onClick={()=>handleSelect(l)}>{l.name}</li>)
+    const _listing = listItem.map((l,key)=> <li className={l.name === value.name ? "active" : ""} key={key} onClick={()=>handleSelect(l)}>{l.name}</li>)
 
     return ( 
                 <ULStyle className="w-100"> 

@@ -8,6 +8,7 @@ import InsideHold from '../../components/host/common/InsideHold';
 import OutsideHold from '../../components/host/common/OutsideHold';
 import { Hold, Home2Parent, HomeSingle } from '../../components/host/styled/common.styled';
 import useLocalStorage from "../../helpers/useLocalStorage";
+import MainParentLayout from '../../components/host/MainParentLayout';
 
 const index = () => { 
  
@@ -43,6 +44,8 @@ useEffect(() => {
  
    
   return (
+    <MainParentLayout fullpage={
+
     <Hold>
       <Layout
         pagename="Hold"
@@ -70,6 +73,7 @@ useEffect(() => {
       />
      
     </Hold>
+    }/>
   )
 }
 

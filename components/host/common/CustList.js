@@ -7,10 +7,15 @@ import {MdOutlineNotificationsActive} from 'react-icons/md';
 import {FaRegPaperPlane} from 'react-icons/fa';  
 import {GoLocation} from 'react-icons/go';   
 import {BsChatRightText} from 'react-icons/bs';   
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
  
 
 const CustList = (props) => {
+
+    const router = useRouter();
+
     const [edit, setEdit] = useState(false);
     const [expand, setExpand] = useState(false);
 
@@ -35,7 +40,9 @@ const CustList = (props) => {
                     {props.queueNumber?<SeqNumStyle># {props.queueNumber}</SeqNumStyle>:''}
                     <FlexHspace>
                         <FlexHspace className="justify-center">
+                            <Link href={`${router.pathname}?deatils=${props.id}`} >                    
                             {props.photo? <IamgeAvatarStyle src={props.photo} /> : <IamgeAvatarStyle src="../img/avatar.png" />}
+                            </Link>
                             
                             <TextDetailSmallStyle>
                                 
@@ -59,14 +66,18 @@ const CustList = (props) => {
                                 <IoMdTime/> 
                                 <p>{props.queueTime}</p>
                             </TileInfoStyle>
+                            {props.hasApp?<>  
                             <TileInfoStyle>
                                 <GoLocation/> 
                                 <p>{props.distanceTime}</p>
                             </TileInfoStyle>
+
                             <TileInfoStyle>
                                 <IoMdCheckmarkCircleOutline className="check_color"/> 
                                 <p>Checked in / 2 min</p>
-                            </TileInfoStyle> 
+                            </TileInfoStyle>
+                            </> 
+                            :''}
                         </div> 
                     </StatusInfoStyle> 
 
@@ -96,6 +107,10 @@ const CustList = (props) => {
                                         </span> 
                                         <p>Not answered <span>00:10</span></p>
                                     </ExpandDtl>
+                                    
+
+                                    {props.hasApp?
+                                    <>
                                     <ExpandDtl>  
                                         <span>
                                             <FaRegPaperPlane/>
@@ -108,6 +123,8 @@ const CustList = (props) => {
                                         </span> 
                                         <p>Ready</p>
                                     </ExpandDtl>
+                                    </> 
+                                    :''}
                                 </ParentExpandDtl>
                                 
                                 <AnotherParentExpandDtl>
@@ -140,9 +157,9 @@ const CustList = (props) => {
                 <ParentCustButtonsStyle onClick={(e)=>handleEdit(e)}>
                     {edit?     
                     <>
-                    <SeatButtonStyle onClick={()=>alert("seat")}>Seat</SeatButtonStyle>
-                    <HoldButtonStyle onClick={()=>alert("hold")}>Hold</HoldButtonStyle>
-                    <CancelButtonStyle onClick={()=>alert("cancel")}>Cancel</CancelButtonStyle>
+                    <SeatButtonStyle onClick={props.handleseat}>Seat</SeatButtonStyle>
+                    <HoldButtonStyle onClick={props.handlehold}>Hold</HoldButtonStyle>
+                    <CancelButtonStyle onClick={props.handlecancel}>Cancel</CancelButtonStyle>
                     </>
                     :
                     <>

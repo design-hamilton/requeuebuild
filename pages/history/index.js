@@ -8,6 +8,7 @@ import InsideHistory from '../../components/host/common/InsideHistory';
 import OutsideHistory from '../../components/host/common/OutsideHistory';
 import { History, Hold, Home2Parent, HomeSingle } from '../../components/host/styled/common.styled';
 import useLocalStorage from "../../helpers/useLocalStorage";
+import MainParentLayout from '../../components/host/MainParentLayout';
 
 const index = () => { 
  
@@ -43,6 +44,8 @@ useEffect(() => {
  
    
   return (
+    <MainParentLayout fullpage={
+
     <History>
       <Layout
         pagename="History"
@@ -70,6 +73,7 @@ useEffect(() => {
       />
      
     </History>
+    }/>
   )
 }
 

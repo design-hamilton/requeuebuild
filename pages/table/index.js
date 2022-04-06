@@ -9,6 +9,7 @@ import LargeSummaryTable from '../../components/host/common/LargeSummaryTable';
 import TablesGrid from '../../components/host/common/TablesGrid';
 import { useEffect, useState } from 'react';
 import { GetLocalStorage } from '../../helpers/localStorage';
+import MainParentLayout from '../../components/host/MainParentLayout';
 
 
 
@@ -19,6 +20,8 @@ function index() {
       }, []);
   return (
     <>
+        <MainParentLayout fullpage={
+
       <TablePage>
         <div className="container">
           <FlexHLeft className="gap">
@@ -49,6 +52,7 @@ function index() {
           </FlexHLeft>
         </div>
       </TablePage>
+        }/>
     </>
   )
 }

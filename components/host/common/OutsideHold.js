@@ -11,14 +11,13 @@ const OutsideHold = ({ TopTitle, w100 }) => {
     const router = useRouter();
 
     const {outsidehold,statistics} = useContext(GlobalContext);   
-    const [outside, setOutside] = useState([]) 
-    const [outsideholdstate, setOutsideholdstate] = useState([])
+    const [outside, setOutside] = useState([]); 
+    // const [outsideholdstate, setOutsideholdstate] = useState([])
 
     useEffect(() => {
       return () => {
-        setOutside(outsidehold[0])
-        setOutsideholdstate(statistics[0])
-
+        setOutside(outsidehold[0]);
+        // setOutsideholdstate(statistics[0]) 
       }
     });
 

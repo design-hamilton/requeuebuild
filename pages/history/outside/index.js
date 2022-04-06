@@ -6,6 +6,7 @@ import Message from '../../../components/host/common/Message';
 import OutsideHistory from '../../../components/host/common/OutsideHistory'; 
 import { Home2Parent, HomeSingle, History } from '../../../components/host/styled/common.styled';
 import useLocalStorage from "../../../helpers/useLocalStorage";
+import MainParentLayout from '../../../components/host/MainParentLayout';
  
 
 const index = () => { 
@@ -40,6 +41,8 @@ const index = () => {
 
   return (
     <>
+        <MainParentLayout fullpage={
+
     <History>
       <Layout
         pagename="History"
@@ -65,6 +68,7 @@ const index = () => {
         }
       />
       </History>
+        }/>
     </>
   )
 }

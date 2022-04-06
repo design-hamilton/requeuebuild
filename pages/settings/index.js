@@ -6,7 +6,7 @@ import { MdSettings, MdOutlineNotificationsActive } from 'react-icons/md';
 import { GoPrimitiveDot } from 'react-icons/go';
 import { SettingsBox, GridForTwo, EditSetting, InputSettings, SaveSetting, StyledModalHeader, SpacedFlex, SaveModl, ModlTextarea, DangerPera } from '../../components/host/styled/common.styled';
 import Switch from '../../components/host/common/input/Switch';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Select from '../../components/host/common/input/Select';
 import Link from 'next/link';
 import Modal from 'react-modal';
@@ -17,18 +17,32 @@ import { ClosingInputModal } from '../../components/host/common/input/ClosingInp
 import DaysModal from '../../components/host/common/DaysModal';
 import OpeningAndClosingDays from '../../components/host/common/OpeningAndClosingDays'; 
 import { GetLocalStorage } from '../../helpers/localStorage';
+import { GlobalContext } from '../../contextApi/Provider';
+import { settingsData } from '../../helpers/apiCalls/apiGet';
+import MainParentLayout from '../../components/host/MainParentLayout';
+import { getCookie } from 'cookies-next';
 
 
 Modal.setAppElement('#__next');
 Modal.defaultStyles.overlay.backgroundColor = 'rgb(36 38 39 / 85%)';
 
 const index = () => {
+
+    const {authToken,loading,settings} = useContext(GlobalContext);  
+
+    
+
+// console.log(settings[0]);
+
+
+
+
     const router = useRouter();
 
-    const [autocancel, setAutocancel] = useState(false);
+    const [autocancel, setAutocancel] = useState(settings[0].autoCancel);
     const handelAutocancel = (e) => { setAutocancel(!autocancel); }
 
-    const [cancelreason, setCancelReason] = useState(false);
+    const [cancelreason, setCancelReason] = useState(settings[0].cancelReasonRequired);
     const handelCancelreason = (e) => { setCancelReason(!cancelreason); }
 
     const [branchoffline, setBranchoffline] = useState(false);
@@ -132,7 +146,41 @@ const index = () => {
 
   
  
+
+    // useEffect(() => {
+    //     setAutocancel(settings[0].autoCancel)
+    // })
+
+    
+    useEffect(() => {
+       
+        let token = getCookie('token'); 
+
+        if(token){
+            authToken[1](token);
+            loading[1](false);  
+                  settingsData(token).then((response) => {  
+                    if(response.data.success){ 
+                        settings[1](response.data.data); 
+                        // console.log(settings[0]);
+                    } 
+                  }).catch((error)=> {
+                    console.log(error);  
+                  }); 
+    
+    
+        }else{
+            authToken[1]();
+            router.push('login');
+            loading[1](true); 
+        }
+        
+    }, []); 
+
+    
     return (
+        <MainParentLayout fullpage={
+
         <>
             <div className="container pb-4">
                 <FlexHspace className="mt-5 settings">
@@ -576,11 +624,11 @@ const index = () => {
                 <FlexH className="mt-5 mb-5 gap pl-5 pr-5">
                     <div className="w-100">
                         <p className="text-center m-0">English</p>
-                        <ModlTextarea className="" id="textareaModal" name="textareaModal" defaultValue="Please proceed to the HOST, your table Will be ready soon" placeholder="ADD NOTE ( OPTIONAL )" />
+                        <ModlTextarea className="" id="textareaModal" name="textareaModal" defaultValue={settings[0].lilouCustomMessageEn} placeholder="ADD NOTE ( OPTIONAL )" />
                     </div>
                     <div className="w-100 ">
                         <p className="text-center m-0">Arabic</p>
-                        <ModlTextarea className="arabic text-right" id="textareaModal" name="textareaModal" defaultValue="الرجاء التوجه الى المطعم حال > طاولتك ستجهز قريبا" placeholder="ADD NOTE ( OPTIONAL )" />
+                        <ModlTextarea className="arabic text-right" id="textareaModal" name="textareaModal" defaultValue={settings[0].lilouCustomMessageAr} placeholder="ADD NOTE ( OPTIONAL )" />
                     </div>
                 </FlexH>
                 <div className="w-100 text-center mb-2">
@@ -608,11 +656,11 @@ const index = () => {
                 <FlexH className="mt-5 mb-5 gap pl-5 pr-5">
                     <div className="w-100">
                         <p className="text-center m-0">English</p>
-                        <ModlTextarea className="" id="textareaModal" name="textareaModal" defaultValue="Please proceed to the HOST, your table Will be ready soon" placeholder="ADD NOTE ( OPTIONAL )" />
+                        <ModlTextarea className="" id="textareaModal" name="textareaModal" defaultValue={settings[0].lilouNotificationMessageEn} placeholder="ADD NOTE ( OPTIONAL )" />
                     </div>
                     <div className="w-100 ">
                         <p className="text-center m-0">Arabic</p>
-                        <ModlTextarea className="arabic text-right" id="textareaModal" name="textareaModal" defaultValue="الرجاء التوجه الى المطعم حال > طاولتك ستجهز قريبا" placeholder="ADD NOTE ( OPTIONAL )" />
+                        <ModlTextarea className="arabic text-right" id="textareaModal" name="textareaModal" defaultValue={settings[0].lilouNotificationMessageAr} placeholder="ADD NOTE ( OPTIONAL )" />
                     </div>
                 </FlexH>
                 <div className="w-100 text-center mb-2">
@@ -642,6 +690,7 @@ const index = () => {
             {/* Opening and CLosing */}
 
         </>
+        }/>
     )
 }
 

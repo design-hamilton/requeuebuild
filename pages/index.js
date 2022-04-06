@@ -1,23 +1,22 @@
 import { useRouter } from "next/router" 
 import { useEffect } from "react";
-import { GetLocalStorage } from "../helpers/localStorage";
-
-
-// import React, { useEffect } from "react";
-// import Router from 'next/router'
-  
+import MainParentLayout from "../components/host/MainParentLayout";
+ 
 export default function Home() { 
   const router = useRouter();
+  const pathname = router.pathname
+
   useEffect(() => {
-    const pathname = router.pathname
     if(pathname == '/' ){
         router.push('home')
     }
   });
 return(
-  <>
-    <h1>load</h1>
-  </>
+  <MainParentLayout fullpage={ 
+      <>
+      <h1>Loading</h1>
+      </>
+  }/>
 )
 }
 

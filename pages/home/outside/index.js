@@ -1,13 +1,14 @@
 
-import Layout from '../../components/host/Layout';
-import Ofline from '../../components/host/common/Offline';
+import Layout from '../../../components/host/Layout';
+import Ofline from '../../../components/host/common/Offline';
 import { useState, useEffect } from 'react';
-import Message from '../../components/host/common/Message';
-import Modal from '../../components/host/common/Modal';
-import Outside from '../../components/host/common/Outside';
+import Message from '../../../components/host/common/Message';
+import Modal from '../../../components/host/common/Modal';
+import Outside from '../../../components/host/common/Outside';
 // import Outside from '../../components/host/common/Outside';
-import { Home2Parent, HomeSingle, QueueMain } from '../../components/host/styled/common.styled';
-import useLocalStorage from "../../helpers/useLocalStorage";
+import { Home2Parent, HomeSingle, QueueMain } from '../../../components/host/styled/common.styled';
+import useLocalStorage from "../../../helpers/useLocalStorage";
+import MainParentLayout from '../../../components/host/MainParentLayout';
  
 
 const index = () => { 
@@ -42,6 +43,8 @@ const index = () => {
 
   return (
     <>
+        <MainParentLayout fullpage={
+
     <QueueMain>
       <Layout
         pagename="Queue"
@@ -50,6 +53,7 @@ const index = () => {
         listViewCls={listViewCls}   
         gridViewCls={gridViewCls}   
         clas={icn}
+        fromInner="../"
         body={
           <div className="body">
             <Ofline styled="true"></Ofline>
@@ -78,6 +82,7 @@ const index = () => {
         }
       />
       </QueueMain>
+        }/>
     </>
   )
 }

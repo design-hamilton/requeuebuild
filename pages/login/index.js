@@ -9,6 +9,8 @@ import { useRouter } from "next/router";
 import { userLogin } from "../../helpers/apiCalls/apiPost";
 import { SaveLocalStorage } from "../../helpers/localStorage";
 import { GlobalContext } from "../../contextApi/Provider";
+ 
+import { setCookies } from "cookies-next";
 
 const login=()=> { 
   
@@ -36,7 +38,10 @@ const login=()=> {
       if(response.data.success){
         let accessToken = response.data.data.acessToken;
         // console.log(response);
-        SaveLocalStorage('token', accessToken);
+        // SaveLocalStorage('token', accessToken);
+        // setTokenCookie(accessToken);
+        setCookies('token', accessToken)
+
         // window.location.reload();
         authToken[1](accessToken);
         router.push('home');

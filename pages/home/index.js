@@ -8,6 +8,7 @@ import Inside from '../../components/host/common/Inside';
 import Outside from '../../components/host/common/Outside';
 import { Home2Parent, HomeSingle, QueueMain } from '../../components/host/styled/common.styled';
 import useLocalStorage from "../../helpers/useLocalStorage"; 
+import MainParentLayout from '../../components/host/MainParentLayout';
 
 
 const index = () => {  
@@ -42,7 +43,7 @@ useEffect(() => {
 
   return (
     <>
-    
+    <MainParentLayout fullpage={ 
     <QueueMain>
       <Layout
         pagename="Queue"
@@ -69,7 +70,7 @@ useEffect(() => {
         }
       />
      </QueueMain>
-     
+     }/>
     </>
   )
 }

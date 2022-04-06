@@ -10,15 +10,12 @@ import { useRouter } from 'next/router';
 const OutsideHistory = ({ TopTitle, w100 }) => {
     const router = useRouter();
 
-    const {outsidehistory,statistics} = useContext(GlobalContext);   
-    const [outside, setOutside] = useState([]) 
-    const [outsideholdstate, setOutsideholdstate] = useState([])
+    const {outsidehistory} = useContext(GlobalContext);   
+    const [outside, setOutside] = useState([]) ;
 
     useEffect(() => {
       return () => {
-        setOutside(outsidehistory[0])
-        setOutsideholdstate(statistics[0])
-
+        setOutside(outsidehistory[0]); 
       }
     });
 
